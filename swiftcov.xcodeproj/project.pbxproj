@@ -7,13 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1401EBD51B11612C000D8737 /* Shell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBD41B11612C000D8737 /* Shell.swift */; };
+		1401EBDB1B11657C000D8737 /* coverage.py in Resources */ = {isa = PBXBuildFile; fileRef = 1401EBD61B116504000D8737 /* coverage.py */; };
+		1401EBE81B14AFE2000D8737 /* Xcodebuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */; };
+		1401EBEA1B14B009000D8737 /* BuildSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBE91B14B009000D8737 /* BuildSettings.swift */; };
 		D0AAAB5019FB0960007B24B3 /* SwiftCovFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0D1216D19E87B05005E4BAA /* SwiftCovFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0D1217219E87B05005E4BAA /* SwiftCovFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D1217119E87B05005E4BAA /* SwiftCovFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0D1217819E87B05005E4BAA /* SwiftCovFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D1216D19E87B05005E4BAA /* SwiftCovFramework.framework */; };
 		D0DB09A419EA354200234B16 /* InstrumentTraceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DB09A319EA354200234B16 /* InstrumentTraceTests.swift */; };
 		D0E7B65319E9C6AD00EDBA4D /* SwiftCovFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D1216D19E87B05005E4BAA /* SwiftCovFramework.framework */; };
 		D0E7B65619E9C76900EDBA4D /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0D1211B19E87861005E4BAA /* main.swift */; };
-		E83A0B351A5D382B0041A60A /* VersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A0B341A5D382B0041A60A /* VersionCommand.swift */; };
+		E83A0B351A5D382B0041A60A /* Version.swift in Sources */ = {isa = PBXBuildFile; fileRef = E83A0B341A5D382B0041A60A /* Version.swift */; };
 		E8996A241B0CA04000CFEC14 /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8996A231B0CA04000CFEC14 /* Box.framework */; };
 		E8996A261B0CA04300CFEC14 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8996A251B0CA04300CFEC14 /* Result.framework */; };
 		E8996A271B0CA06600CFEC14 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E8996A251B0CA04300CFEC14 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -22,7 +26,7 @@
 		E8D86D851A688EF20063E8E9 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8D86D841A688EF20063E8E9 /* Errors.swift */; };
 		E8DC55061B0C9CF900A694F5 /* Commandant.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8DC55051B0C9CF900A694F5 /* Commandant.framework */; };
 		E8DC55071B0C9D3300A694F5 /* Commandant.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = E8DC55051B0C9CF900A694F5 /* Commandant.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		E8DC55091B0C9E7200A694F5 /* GenerateCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC55081B0C9E7200A694F5 /* GenerateCommand.swift */; };
+		E8DC55091B0C9E7200A694F5 /* Generate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC55081B0C9E7200A694F5 /* Generate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +74,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1401EBD41B11612C000D8737 /* Shell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shell.swift; sourceTree = "<group>"; };
+		1401EBD61B116504000D8737 /* coverage.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = coverage.py; sourceTree = "<group>"; };
+		1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcodebuild.swift; sourceTree = "<group>"; };
+		1401EBE91B14B009000D8737 /* BuildSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSettings.swift; sourceTree = "<group>"; };
 		5499CA961A2394B700783309 /* Components.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Components.plist; sourceTree = "<group>"; };
 		5499CA971A2394B700783309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D1211B19E87861005E4BAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -99,13 +107,13 @@
 		D0DB09A319EA354200234B16 /* InstrumentTraceTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentTraceTests.swift; sourceTree = "<group>"; usesTabs = 0; };
 		D0E7B63219E9C64500EDBA4D /* swiftcov.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = swiftcov.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D0E7B65819E9CA0800EDBA4D /* swiftcov */ = {isa = PBXFileReference; lastKnownFileType = text; path = swiftcov; sourceTree = BUILT_PRODUCTS_DIR; };
-		E83A0B341A5D382B0041A60A /* VersionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VersionCommand.swift; sourceTree = "<group>"; };
+		E83A0B341A5D382B0041A60A /* Version.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Version.swift; sourceTree = "<group>"; };
 		E8996A231B0CA04000CFEC14 /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Box.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8996A251B0CA04300CFEC14 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E89AC9F91B0C989B00DFC22C /* InstrumentTrace.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstrumentTrace.swift; sourceTree = "<group>"; };
 		E8D86D841A688EF20063E8E9 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		E8DC55051B0C9CF900A694F5 /* Commandant.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Commandant.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E8DC55081B0C9E7200A694F5 /* GenerateCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenerateCommand.swift; sourceTree = "<group>"; };
+		E8DC55081B0C9E7200A694F5 /* Generate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Generate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,8 +181,8 @@
 			isa = PBXGroup;
 			children = (
 				D0D1211B19E87861005E4BAA /* main.swift */,
-				E8DC55081B0C9E7200A694F5 /* GenerateCommand.swift */,
-				E83A0B341A5D382B0041A60A /* VersionCommand.swift */,
+				E8DC55081B0C9E7200A694F5 /* Generate.swift */,
+				E83A0B341A5D382B0041A60A /* Version.swift */,
 				E8D86D841A688EF20063E8E9 /* Errors.swift */,
 				5499CA981A2394BD00783309 /* Supporting Files */,
 			);
@@ -253,6 +261,10 @@
 			children = (
 				D0D1217119E87B05005E4BAA /* SwiftCovFramework.h */,
 				E89AC9F91B0C989B00DFC22C /* InstrumentTrace.swift */,
+				1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */,
+				1401EBE91B14B009000D8737 /* BuildSettings.swift */,
+				1401EBD41B11612C000D8737 /* Shell.swift */,
+				1401EBD61B116504000D8737 /* coverage.py */,
 				D0D1216F19E87B05005E4BAA /* Supporting Files */,
 			);
 			name = SwiftCovFramework;
@@ -310,6 +322,7 @@
 				D0D1216819E87B05005E4BAA /* Sources */,
 				D0D1216919E87B05005E4BAA /* Frameworks */,
 				D0D1216A19E87B05005E4BAA /* Headers */,
+				1401EBDA1B116571000D8737 /* Resources */,
 				D039935519E9A9F500D13E71 /* Copy Frameworks */,
 			);
 			buildRules = (
@@ -378,7 +391,7 @@
 					};
 				};
 			};
-			buildConfigurationList = D0D1211319E87861005E4BAA /* Build configuration list for PBXProject "SwiftCov" */;
+			buildConfigurationList = D0D1211319E87861005E4BAA /* Build configuration list for PBXProject "swiftcov" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -397,6 +410,17 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1401EBDA1B116571000D8737 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1401EBDB1B11657C000D8737 /* coverage.py in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
 		C2265FAB1A4B86AC00158358 /* Check Xcode Version */ = {
@@ -436,7 +460,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1401EBE81B14AFE2000D8737 /* Xcodebuild.swift in Sources */,
+				1401EBD51B11612C000D8737 /* Shell.swift in Sources */,
 				E89AC9FA1B0C989B00DFC22C /* InstrumentTrace.swift in Sources */,
+				1401EBEA1B14B009000D8737 /* BuildSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -452,9 +479,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E83A0B351A5D382B0041A60A /* VersionCommand.swift in Sources */,
+				E83A0B351A5D382B0041A60A /* Version.swift in Sources */,
 				D0E7B65619E9C76900EDBA4D /* main.swift in Sources */,
-				E8DC55091B0C9E7200A694F5 /* GenerateCommand.swift in Sources */,
+				E8DC55091B0C9E7200A694F5 /* Generate.swift in Sources */,
 				E8D86D851A688EF20063E8E9 /* Errors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -753,7 +780,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D0D1211319E87861005E4BAA /* Build configuration list for PBXProject "SwiftCov" */ = {
+		D0D1211319E87861005E4BAA /* Build configuration list for PBXProject "swiftcov" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D0D1211D19E87861005E4BAA /* Debug */,
