@@ -22,16 +22,16 @@ struct GenerateCommand: CommandType {
                 return .failure(toCommandantError(.InvalidArgument(description: "Usage: swiftcov [swiftcov options] xcodebuild [xcodebuild options]")))
             }
             if find(arguments, "xcodebuild") == nil {
-                return .failure(toCommandantError(.InvalidArgument(description: "Error: requied xcodebuild command")))
+                return .failure(toCommandantError(.InvalidArgument(description: "requied xcodebuild command")))
             }
             if find(arguments, "test") == nil {
-                return .failure(toCommandantError(.InvalidArgument(description: "Error: requied test action")))
+                return .failure(toCommandantError(.InvalidArgument(description: "requied `test` action in xcodebuild command")))
             }
             if find(arguments, "-configuration") == nil {
-                return .failure(toCommandantError(.InvalidArgument(description: "Error: requied configuration")))
+                return .failure(toCommandantError(.InvalidArgument(description: "requied `-configuration` option in xcodebuild command")))
             }
             if find(arguments, "-sdk") == nil {
-                return .failure(toCommandantError(.InvalidArgument(description: "Error: requied sdk")))
+                return .failure(toCommandantError(.InvalidArgument(description: "requied `-sdk` option in xcodebuild command")))
             }
 
             var xcodebuild = Xcodebuild(argments: arguments)
