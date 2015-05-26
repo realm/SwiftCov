@@ -9,7 +9,7 @@
 import Commandant
 import Result
 
-private let version = "0.4.3"
+private let version = "0.1.0"
 
 struct VersionCommand: CommandType {
     typealias ClientError = SwiftCovError
