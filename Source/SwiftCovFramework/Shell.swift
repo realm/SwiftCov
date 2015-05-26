@@ -27,25 +27,18 @@ public class Shell {
         self.environment = environment
     }
 
-    public func run() -> Result<(), Int32> {
+    public func run() -> Result<String, TerminationStatus> {
         let task = createTask()
-        task.launch()
-        task.waitUntilExit()
 
-        if task.terminationStatus == EXIT_SUCCESS {
-            return .success()
-        } else {
-            return .failure(task.terminationStatus)
-        }
+        let result = launchTask(task)
+        return result
     }
 
     public func output() -> Result<String, TerminationStatus> {
         let task = createTask()
+        task.standardOutput = NSPipe()
 
-        let pipe = NSPipe()
-        task.standardOutput = pipe
-
-        let result = launchTask(task, pipe: pipe)
+        let result = launchTask(task)
         return result
     }
 
@@ -56,7 +49,7 @@ public class Shell {
         task.standardOutput = pipe
         task.standardError = pipe
 
-        let result = launchTask(task, pipe: pipe)
+        let result = launchTask(task)
         return result
     }
 
@@ -74,7 +67,7 @@ public class Shell {
         return task
     }
 
-    private func launchTask(task: NSTask, pipe: NSPipe) -> Result<String, TerminationStatus> {
+    private func launchTask(task: NSTask) -> Result<String, TerminationStatus> {
         if task.standardOutput.fileHandleForReading != nil {
             task.standardOutput.fileHandleForReading.readabilityHandler = { fileHandle in
                 if let string = NSString(data: fileHandle.availableData, encoding: NSUTF8StringEncoding) {
@@ -94,6 +87,15 @@ public class Shell {
 
         task.launch()
         task.waitUntilExit()
+
+        task.terminationHandler = { task in
+            if task.standardOutput.fileHandleForReading != nil {
+                task.standardOutput.fileHandleForReading.readabilityHandler = nil
+            }
+            if task.standardError.fileHandleForReading != nil {
+                task.standardError.fileHandleForReading.readabilityHandler = nil
+            }
+        }
 
         if task.terminationStatus == EXIT_SUCCESS {
             return .success(outputString)
