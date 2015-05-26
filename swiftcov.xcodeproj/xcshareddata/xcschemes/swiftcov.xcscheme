@@ -45,7 +45,7 @@
             BlueprintIdentifier = "D0E7B63119E9C64500EDBA4D"
             BuildableName = "swiftcov.app"
             BlueprintName = "swiftcov"
-            ReferencedContainer = "container:SwiftCov.xcodeproj">
+            ReferencedContainer = "container:swiftcov.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "D0E7B63119E9C64500EDBA4D"
             BuildableName = "swiftcov.app"
             BlueprintName = "swiftcov"
-            ReferencedContainer = "container:SwiftCov.xcodeproj">
+            ReferencedContainer = "container:swiftcov.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>

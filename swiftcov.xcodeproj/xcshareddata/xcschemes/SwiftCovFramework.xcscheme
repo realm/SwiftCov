@@ -17,7 +17,7 @@
                BlueprintIdentifier = "D0D1216C19E87B05005E4BAA"
                BuildableName = "SwiftCovFramework.framework"
                BlueprintName = "SwiftCovFramework"
-               ReferencedContainer = "container:SwiftCov.xcodeproj">
+               ReferencedContainer = "container:swiftcov.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -31,7 +31,7 @@
                BlueprintIdentifier = "D0D1217619E87B05005E4BAA"
                BuildableName = "SwiftCovFrameworkTests.xctest"
                BlueprintName = "SwiftCovFrameworkTests"
-               ReferencedContainer = "container:SwiftCov.xcodeproj">
+               ReferencedContainer = "container:swiftcov.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -49,7 +49,7 @@
                BlueprintIdentifier = "D0D1217619E87B05005E4BAA"
                BuildableName = "SwiftCovFrameworkTests.xctest"
                BlueprintName = "SwiftCovFrameworkTests"
-               ReferencedContainer = "container:SwiftCov.xcodeproj">
+               ReferencedContainer = "container:swiftcov.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -59,7 +59,7 @@
             BlueprintIdentifier = "D0D1216C19E87B05005E4BAA"
             BuildableName = "SwiftCovFramework.framework"
             BlueprintName = "SwiftCovFramework"
-            ReferencedContainer = "container:SwiftCov.xcodeproj">
+            ReferencedContainer = "container:swiftcov.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -78,7 +78,7 @@
             BlueprintIdentifier = "D0D1216C19E87B05005E4BAA"
             BuildableName = "SwiftCovFramework.framework"
             BlueprintName = "SwiftCovFramework"
-            ReferencedContainer = "container:SwiftCov.xcodeproj">
+            ReferencedContainer = "container:swiftcov.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -96,7 +96,7 @@
             BlueprintIdentifier = "D0D1216C19E87B05005E4BAA"
             BuildableName = "SwiftCovFramework.framework"
             BlueprintName = "SwiftCovFramework"
-            ReferencedContainer = "container:SwiftCov.xcodeproj">
+            ReferencedContainer = "container:swiftcov.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>
