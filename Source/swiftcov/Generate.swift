@@ -34,11 +34,17 @@ struct GenerateCommand: CommandType {
                 return .failure(toCommandantError(.InvalidArgument(description: "requied `-sdk` option in xcodebuild command")))
             }
 
+            println("Generate test code coverage files")
+            println("Loading build settings...")
+
             var xcodebuild = Xcodebuild(argments: arguments)
             let result = xcodebuild.showBuildSettings()
                 .map { BuildSettingsParser().buildSettingsFromOutput($0) }
                 .map { buildSettings -> Result<String, TerminationStatus> in
+                    println("Building target...")
                     xcodebuild.buildExecutable()
+
+                    println("Generating code coverage...")
                     return GenerateCommand.runCoverageReport(options: options, settings: buildSettings) }
                 .flatMap { $0 }
 
@@ -62,15 +68,15 @@ struct GenerateCommand: CommandType {
             let scriptPath = NSBundle(forClass: Shell.self).pathForResource("coverage", ofType: "py") {
                 let targetPath = builtProductsDir.stringByAppendingPathComponent(fullProductName)
                 let outputDir: String
-                if count(options.output) > 0 {
+                if options.output.isEmpty {
+                    outputDir = objectFileDirNormal.stringByAppendingPathComponent(currentArch)
+                } else {
                     let fileManager = NSFileManager()
                     var isDirectory = ObjCBool(false)
                     if !fileManager.fileExistsAtPath(options.output, isDirectory: &isDirectory) || !isDirectory {
                         fileManager.createDirectoryAtPath(options.output, withIntermediateDirectories: true, attributes: nil, error: nil)
                     }
                     outputDir = options.output
-                } else {
-                    outputDir = objectFileDirNormal.stringByAppendingPathComponent(currentArch)
                 }
 
                 return Shell(commandPath: "/usr/bin/xcode-select", arguments: ["--print-path"]).output()

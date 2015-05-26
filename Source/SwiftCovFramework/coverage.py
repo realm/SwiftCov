@@ -146,6 +146,7 @@ def report_caverage(coverage_files, output_dir):
 
         with io.open(report_path, mode = 'wb') as fh:
             fh.write('\n'.join(report))
+            print("Created '%s'" % report_path)
 
 def fild_all_files(directory):
     for root, dirs, files in os.walk(directory):
@@ -210,8 +211,12 @@ def main():
                             launch_error
                            )
 
+    print 'Collecting coverage data...'
     collect_coverage_data(target, coverage_files)
+    print 'Generating gcov files...'
     report_caverage(coverage_files, output_dir)
+
+    print("Coverage files successfully generated to '%s'" % output_dir)
 
 if __name__ == '__main__':
     main()
