@@ -37,9 +37,10 @@ struct GenerateCommand: CommandType {
             var xcodebuild = Xcodebuild(argments: arguments)
             let result = xcodebuild.showBuildSettings()
                 .map { BuildSettingsParser().buildSettingsFromOutput($0) }
-                .map { buildSettings -> Bool in
+                .map { buildSettings -> Result<String, TerminationStatus> in
                     xcodebuild.buildExecutable()
                     return GenerateCommand.runCoverageReport(options: options, settings: buildSettings) }
+                .flatMap { $0 }
 
             switch result {
             case .Success:
@@ -50,7 +51,7 @@ struct GenerateCommand: CommandType {
         }
     }
 
-    static func runCoverageReport(#options: GenerateOptions, settings: BuildSettings) -> Bool {
+    static func runCoverageReport(#options: GenerateOptions, settings: BuildSettings) -> Result<String, TerminationStatus> {
         if let sdkName = settings.executable.buildSettings["SDK_NAME"],
             let sdkroot = settings.executable.buildSettings["SDKROOT"],
             let builtProductsDir = settings.testingBundles.first?.buildSettings["BUILT_PRODUCTS_DIR"],
@@ -88,16 +89,12 @@ struct GenerateCommand: CommandType {
                         env["SWIFTCOV_HIT_COUNT"] = "\(options.threshold)"
 
                         return Shell(commandPath: "/usr/bin/python", arguments: [scriptPath, targetPath, srcroot, outputDir], environment: env).run() }
+                    .flatMap { $0 }
 
-                switch result {
-                case .Success:
-                    return true
-                case let .Failure(error):
-                    return false
-                }
+                return result
         }
 
-        return false
+        return Result(error: -1)
     }
 }
 
