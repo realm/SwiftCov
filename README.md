@@ -6,25 +6,36 @@ for Swift.
 ## Usage
 
 ```shell
-$ swiftcov generate [swiftcov options] xcodebuild [xcodebuild options]
-```
-
-### Example
-
-```shell
-$ swiftcov generate xcodebuild -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
+$ swiftcov generate xcodebuild -project RealmSwift.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
 ```
 
 ```shell
-$ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
+$ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project RealmSwift.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
 ```
-
-__`-configuration` option and `-sdk` option in xcodebuild command must be specified.__
 
 ### Options
 
 - `--output` specify output directory for generated coverage files
 - `--threshold` specify limitation for counting hit count (for performance)
+
+## How to run example project
+
+```shell
+$ make install
+```
+
+```shell
+$ cd Examples/ExampleFramework/
+```
+
+```shell
+$ swiftcov generate --output coverage \
+  xcodebuild -project ExampleFramework.xcodeproj \
+  -scheme ExampleFramework \
+  -sdk iphonesimulator \
+  -configuration Release \
+  test
+```
 
 ## License
 
