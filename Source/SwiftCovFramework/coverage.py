@@ -5,7 +5,7 @@ import subprocess
 import re
 
 XCPATH = subprocess.check_output(['xcode-select', '--print-path']).strip()
-FWPATH = re.sub(r'/Developer$', r'/SharedFrameworks/LLDB.framework/Resources/Python', XCPATH).strip()
+FWPATH = re.sub(r'/Developer/$', r'/SharedFrameworks/LLDB.framework/Resources/Python', XCPATH).strip()
 sys.path.insert(0, FWPATH)
 import lldb
 
