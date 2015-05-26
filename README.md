@@ -6,11 +6,11 @@ for Swift.
 ## Usage
 
 ```shell
-$ swiftcov generate xcodebuild -project RealmSwift.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
+$ swiftcov generate xcodebuild -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
 ```
 
 ```shell
-$ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project RealmSwift.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
+$ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator test
 ```
 
 ### Options
