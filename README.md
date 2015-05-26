@@ -37,6 +37,8 @@ $ swiftcov generate --output coverage \
   test
 ```
 
+Please see [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/coverage/Calculator.swift.gcov)!
+
 ## License
 
 MIT licensed.
