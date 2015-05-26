@@ -73,7 +73,7 @@ struct GenerateCommand: CommandType {
                     outputDir = objectFileDirNormal.stringByAppendingPathComponent(currentArch)
                 }
 
-                let result = Shell(commandPath: "/usr/bin/xcode-select", arguments: ["--print-path"]).output()
+                return Shell(commandPath: "/usr/bin/xcode-select", arguments: ["--print-path"]).output()
                     .map { $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) }
                     .map { xcodePath -> Result<String, TerminationStatus> in
                         let dyldFallbackFrameworkPath = "/Library/Frameworks:/Network/Library/Frameworks:/System/Library/Frameworks:\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks:\(xcodePath)/Library/PrivateFrameworks:\(xcodePath)/../OtherFrameworks:\(xcodePath)/../SharedFrameworks:\(xcodePath)/Library/Frameworks:\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks"
@@ -90,8 +90,6 @@ struct GenerateCommand: CommandType {
 
                         return Shell(commandPath: "/usr/bin/python", arguments: [scriptPath, targetPath, srcroot, outputDir], environment: env).run() }
                     .flatMap { $0 }
-
-                return result
         }
 
         return Result(error: -1)
