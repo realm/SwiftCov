@@ -25,12 +25,12 @@ public struct Xcodebuild {
     }
 
     public func showBuildSettings() -> Result<String, TerminationStatus> {
-        let command = Shell(commandPath: "/usr/bin/xcrun", arguments: ["xcodebuild"] + arguments + ["-showBuildSettings"])
+        let command = Shell(commandPath: "/usr/bin/xcrun", arguments: ["xcodebuild", "-showBuildSettings"] + arguments)
         return command.output()
     }
 
     public func buildExecutable() -> Result<String, TerminationStatus> {
-        let command = Shell(commandPath: "/usr/bin/xcrun", arguments: ["xcodebuild"] + arguments + ["SWIFT_OPTIMIZATION_LEVEL=-Onone"])
+        let command = Shell(commandPath: "/usr/bin/xcrun", arguments: ["xcodebuild", "SWIFT_OPTIMIZATION_LEVEL=-Onone"] + arguments)
         return command.output()
     }
 }
