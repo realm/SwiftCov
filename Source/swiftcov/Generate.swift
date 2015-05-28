@@ -19,7 +19,7 @@ struct GenerateCommand: CommandType {
         return GenerateOptions.evaluate(mode).flatMap { options in
             let arguments = Process.arguments
             if arguments.count < 4 {
-                return .failure(toCommandantError(.InvalidArgument(description: "Usage: swiftcov [swiftcov options] xcodebuild [xcodebuild options]")))
+                return .failure(toCommandantError(.InvalidArgument(description: "Usage: swiftcov generate [swiftcov options] xcodebuild [xcodebuild options]")))
             }
             if find(arguments, "xcodebuild") == nil {
                 return .failure(toCommandantError(.InvalidArgument(description: "requied xcodebuild command")))
