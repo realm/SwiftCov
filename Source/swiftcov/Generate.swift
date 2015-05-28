@@ -40,10 +40,14 @@ struct GenerateCommand: CommandType {
             var xcodebuild = Xcodebuild(argments: arguments)
             let result = xcodebuild.showBuildSettings()
                 .map { BuildSettingsParser().buildSettingsFromOutput($0) }
-                .map { buildSettings -> Result<String, TerminationStatus> in
+                .map { buildSettings -> Result<BuildSettings, TerminationStatus> in
                     println("Building target...")
-                    xcodebuild.buildExecutable()
-
+                    return xcodebuild.buildExecutable()
+                        .map { output -> Result<BuildSettings, TerminationStatus> in
+                            return .success(buildSettings) }
+                        .flatMap { $0 } }
+                .flatMap { $0 }
+                .map { buildSettings -> Result<String, TerminationStatus> in
                     println("Generating code coverage...")
                     return GenerateCommand.runCoverageReport(options: options, settings: buildSettings) }
                 .flatMap { $0 }
