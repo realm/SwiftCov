@@ -5,7 +5,7 @@ for Swift.
 
 ## Installation
 
-Install the `swiftcov` command line tool by running `git clone` for this repo followed by `make install` in the root directory. Make sure that Xcode 6.3 is set in `xcode-select` before running `make`.
+Install the `swiftcov` command line tool by running `git clone` for this repo followed by `make install` in the root directory.
 
 ## Usage
 
