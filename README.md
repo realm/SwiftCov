@@ -1,7 +1,6 @@
 # SwiftCov
 
-Super early tool (read: not working) to generate test code coverage information
-for Swift.
+A tool to generate test code coverage information for Swift.
 
 ## Installation
 
