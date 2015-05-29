@@ -26,13 +26,7 @@ $ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project Exampl
 
 ```shell
 $ make install
-```
-
-```shell
 $ cd Examples/ExampleFramework/
-```
-
-```shell
 $ swiftcov generate --output coverage \
   xcodebuild -project ExampleFramework.xcodeproj \
   -scheme ExampleFramework \
