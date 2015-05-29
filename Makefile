@@ -51,7 +51,6 @@ prefix_install: installables
 	mkdir -p "$(PREFIX)/Frameworks" "$(PREFIX)/bin"
 	cp -rf "$(TEMPORARY_FOLDER)$(FRAMEWORKS_FOLDER)/SwiftCovFramework.framework" "$(PREFIX)/Frameworks/"
 	cp -f "$(TEMPORARY_FOLDER)$(BINARIES_FOLDER)/swiftcov" "$(PREFIX)/bin/"
-	install_name_tool -add_rpath "@executable_path/../Frameworks" "$(PREFIX)/bin/swiftcov"
 	install_name_tool -add_rpath "@executable_path/../Frameworks/SwiftCovFramework.framework/Versions/Current/Frameworks/" "$(PREFIX)/bin/swiftcov"
 
 package: installables
