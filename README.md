@@ -1,11 +1,10 @@
 # SwiftCov
 
-Super early tool (read: not working) to generate test code coverage information
-for Swift.
+A tool to generate test code coverage information for Swift.
 
 ## Installation
 
-Install the `swiftcov` command line tool by running `git clone` for this repo followed by `make install` in the root directory. Make sure that Xcode 6.3 is set in `xcode-select` before running `make`.
+Install the `swiftcov` command line tool by running `git clone` for this repo followed by `make install` in the root directory.
 
 ## Usage
 
@@ -26,13 +25,7 @@ $ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project Exampl
 
 ```shell
 $ make install
-```
-
-```shell
 $ cd Examples/ExampleFramework/
-```
-
-```shell
 $ swiftcov generate --output coverage \
   xcodebuild -project ExampleFramework.xcodeproj \
   -scheme ExampleFramework \

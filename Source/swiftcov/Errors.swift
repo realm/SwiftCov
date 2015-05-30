@@ -7,7 +7,6 @@
 //
 
 import Commandant
-import Result
 import Box
 
 /// Possible errors within SwiftCov.

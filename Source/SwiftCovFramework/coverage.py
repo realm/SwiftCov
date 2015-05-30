@@ -118,7 +118,7 @@ def collect_coverage_data(target, coverage_files):
             if line_number > 0 and line_number < coverage_file.number_of_lines():
                 coverage_file.set_hit_count(line_number, hit_count)
 
-def report_caverage(coverage_files, output_dir):
+def report_coverage(coverage_files, output_dir):
     for filename in coverage_files:
         report = []
         coverage_file = coverage_files[filename]
@@ -214,7 +214,7 @@ def main():
     print 'Collecting coverage data...'
     collect_coverage_data(target, coverage_files)
     print 'Generating gcov files...'
-    report_caverage(coverage_files, output_dir)
+    report_coverage(coverage_files, output_dir)
 
     print("Coverage files successfully generated to '%s'" % output_dir)
 
