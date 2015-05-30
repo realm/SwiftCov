@@ -28,29 +28,21 @@ public class Shell {
     }
 
     public func run() -> Result<String, TerminationStatus> {
-        let task = createTask()
-
-        let result = launchTask(task)
-        return result
+        return launchTask(createTask())
     }
 
     public func output() -> Result<String, TerminationStatus> {
         let task = createTask()
         task.standardOutput = NSPipe()
-
-        let result = launchTask(task)
-        return result
+        return launchTask(task)
     }
 
     public func combinedOutput() -> Result<String, TerminationStatus> {
         let task = createTask()
-
         let pipe = NSPipe()
         task.standardOutput = pipe
         task.standardError = pipe
-
-        let result = launchTask(task)
-        return result
+        return launchTask(task)
     }
 
     private func createTask() -> NSTask {

@@ -38,7 +38,7 @@ struct GenerateCommand: CommandType {
 
             var xcodebuild = Xcodebuild(argments: arguments)
             let result = xcodebuild.showBuildSettings()
-                .map { BuildSettingsParser().buildSettingsFromOutput($0) }
+                .map { BuildSettings(output: $0) }
                 .flatMap { buildSettings -> Result<BuildSettings, TerminationStatus> in
                     println("Building target...")
                     return xcodebuild.buildExecutable().flatMap { _ in
