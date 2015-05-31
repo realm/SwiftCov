@@ -49,7 +49,7 @@ public struct BuildSettings {
             output.enumerateLines { line, _ in
                 lines.append(line.stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet))
             }
-            return lines
+            return lines.filter { !$0.isEmpty }
         }()
 
         var target: String?
