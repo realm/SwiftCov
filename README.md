@@ -26,15 +26,15 @@ $ swiftcov generate --output ./coverage --threshold 1 xcodebuild -project Exampl
 ```shell
 $ make install
 $ cd Examples/ExampleFramework/
-$ swiftcov generate --output coverage \
-  xcodebuild -project ExampleFramework.xcodeproj \
-  -scheme ExampleFramework \
+$ swiftcov generate --output coverage_ios \
+  xcodebuild test \
+  -project ExampleFramework.xcodeproj \
+  -scheme ExampleFramework-iOS \
   -sdk iphonesimulator \
-  -configuration Release \
-  test
+  -configuration Release
 ```
 
-Please see [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/coverage/Calculator.swift.gcov)!
+Please see [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/coverage_ios/Calculator.swift.gcov)!
 
 ## License
 
