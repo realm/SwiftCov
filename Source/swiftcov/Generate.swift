@@ -74,6 +74,6 @@ struct GenerateOptions: OptionsType {
         return create
             <*> m <| Option(key: "output", defaultValue: "", usage: "Folder to output the coverage files to")
             <*> m <| Option(key: "threshold", defaultValue: 0, usage: "Threshold value of max hit count (for performance)")
-            <*> m <| Switch(flag: "d", key: "debug", usage: "Output very verbose progress messages")
+            <*> m <| Option(key: "debug", defaultValue: false, usage: "Output very verbose progress messages")
     }
 }
