@@ -34,7 +34,17 @@ $ swiftcov generate --output coverage_ios \
   -configuration Release
 ```
 
-Please see [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/coverage_ios/Calculator.swift.gcov)!
+Please see [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/results/Calculator.swift.gcov)!
+
+## Advanced Usage
+
+### Convert to HTML output with Gcovr
+
+```shell
+$ gcovr --root . --use-gcov-files --html --html-details --output coverage.html --keep
+```
+
+See [the generated coverage file](https://github.com/realm/SwiftCov/blob/master/Examples/ExampleFramework/results/coverage.html).
 
 ## License
 

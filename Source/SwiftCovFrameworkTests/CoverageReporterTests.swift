@@ -10,6 +10,10 @@ import XCTest
 import SwiftCovFramework
 
 class CoverageReporterTests: XCTestCase {
+    let reportFilename = "Calculator.swift.gcov"
+    var fixtureFilePath: String {
+        return "./Examples/ExampleFramework/results/" + reportFilename
+    }
 
     override func setUp() {
         super.setUp()
@@ -40,8 +44,7 @@ class CoverageReporterTests: XCTestCase {
             case .Success:
                 switch reporter.runCoverageReport(buildSettings: buildSettings) {
                 case .Success:
-                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent("Calculator.swift.gcov")
-                    let fixtureFilePath = "./Examples/ExampleFramework/coverage_ios/Calculator.swift.gcov"
+                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
 
                     XCTAssertEqual(
                         NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil)!,
@@ -81,8 +84,7 @@ class CoverageReporterTests: XCTestCase {
             case .Success:
                 switch reporter.runCoverageReport(buildSettings: buildSettings) {
                 case .Success:
-                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent("Calculator.swift.gcov")
-                    let fixtureFilePath = "./Examples/ExampleFramework/coverage_osx/Calculator.swift.gcov"
+                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
                     
                     XCTAssertEqual(
                         NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil)!,
