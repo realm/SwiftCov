@@ -120,12 +120,17 @@ def collect_coverage_data(target, coverage_files):
 
 def report_coverage(coverage_files, output_dir):
     for filename in coverage_files:
+        print("File: '%s'" % filename)
+
         report = []
         coverage_file = coverage_files[filename]
 
         report.append('%s:%s:Source:%s' % ('-'.rjust(5), '0'.rjust(5), coverage_file.filename))
         report.append('%s:%s:Runs:%d' % ('-'.rjust(5), '0'.rjust(5), coverage_file.run_count))
         report.append('%s:%s:Programs:%d' % ('-'.rjust(5), '0'.rjust(5), coverage_file.program_count))
+
+        actualLines = 0
+        execlutedLines = 0
 
         for index, line in enumerate(coverage_file.lines):
             coverage_data = coverage_file.coverage_data(index + 1)
@@ -136,10 +141,18 @@ def report_coverage(coverage_files, output_dir):
                 count = '-'
             elif coverage_data.count == 0:
                 count = '#####'
+                actualLines += 1
             else:
                 count = str(coverage_data.count)
+                actualLines += 1
+                execlutedLines += 1
 
             report.append('%s:%s:%s' % (count.rjust(5), str(index + 1).rjust(5), line))
+
+        if actualLines > 0:
+            print('Lines executed: %s of %d' % ('{percent:.2%}'.format(percent = float(execlutedLines) / float(actualLines)), actualLines))
+        else:
+            print('Lines executed: 0.00% of 0')
 
         report_filename = os.path.basename(filename)
         report_path = os.path.join(output_dir, report_filename + '.gcov')
