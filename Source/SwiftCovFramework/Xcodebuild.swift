@@ -10,7 +10,7 @@ import Foundation
 import Result
 
 public struct Xcodebuild {
-    public var arguments: [String]
+    private var arguments: [String]
 
     public init(argments args: [String]) {
         arguments = Array(split(args, allowEmptySlices: true) { $0 == "xcodebuild" }[1])
