@@ -2,11 +2,11 @@
 //  ExampleFramework.h
 //  ExampleFramework
 //
-//  Created by kishikawakatsumi on 2015/05/27.
-//  Copyright (c) 2015年 kishikawakatsumi. All rights reserved.
+//  Created by Kishikawa Katsumi on 2015/05/27.
+//  Copyright (c) 2015 Realm. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 
 //! Project version number for ExampleFramework.
 FOUNDATION_EXPORT double ExampleFrameworkVersionNumber;
@@ -15,5 +15,3 @@ FOUNDATION_EXPORT double ExampleFrameworkVersionNumber;
 FOUNDATION_EXPORT const unsigned char ExampleFrameworkVersionString[];
 
 // In this header, you should import all the public headers of your framework using statements like #import <ExampleFramework/PublicHeader.h>
-
-
