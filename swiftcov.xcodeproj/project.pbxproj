@@ -13,6 +13,8 @@
 		1401EBEA1B14B009000D8737 /* BuildSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBE91B14B009000D8737 /* BuildSettings.swift */; };
 		14DE82611B1B0AA900E1BAA4 /* ShellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */; };
 		14DE82631B1B210700E1BAA4 /* XcodebuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */; };
+		14DE82671B1B4B3D00E1BAA4 /* CoverageReporterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE82661B1B4B3D00E1BAA4 /* CoverageReporterTests.swift */; };
+		14DE826B1B1B4DFA00E1BAA4 /* CoverageReporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE826A1B1B4DFA00E1BAA4 /* CoverageReporter.swift */; };
 		D0AAAB5019FB0960007B24B3 /* SwiftCovFramework.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D0D1216D19E87B05005E4BAA /* SwiftCovFramework.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D0D1217219E87B05005E4BAA /* SwiftCovFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = D0D1217119E87B05005E4BAA /* SwiftCovFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D0D1217819E87B05005E4BAA /* SwiftCovFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D1216D19E87B05005E4BAA /* SwiftCovFramework.framework */; };
@@ -80,6 +82,8 @@
 		1401EBE91B14B009000D8737 /* BuildSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSettings.swift; sourceTree = "<group>"; };
 		14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTests.swift; sourceTree = "<group>"; };
 		14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodebuildTests.swift; sourceTree = "<group>"; };
+		14DE82661B1B4B3D00E1BAA4 /* CoverageReporterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverageReporterTests.swift; sourceTree = "<group>"; };
+		14DE826A1B1B4DFA00E1BAA4 /* CoverageReporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoverageReporter.swift; sourceTree = "<group>"; };
 		5499CA961A2394B700783309 /* Components.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Components.plist; sourceTree = "<group>"; };
 		5499CA971A2394B700783309 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D0D1211B19E87861005E4BAA /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -260,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				D0D1217119E87B05005E4BAA /* SwiftCovFramework.h */,
+				14DE826A1B1B4DFA00E1BAA4 /* CoverageReporter.swift */,
 				1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */,
 				1401EBE91B14B009000D8737 /* BuildSettings.swift */,
 				1401EBD41B11612C000D8737 /* Shell.swift */,
@@ -284,6 +289,7 @@
 		D0D1217B19E87B05005E4BAA /* SwiftCovFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
+				14DE82661B1B4B3D00E1BAA4 /* CoverageReporterTests.swift */,
 				14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */,
 				14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */,
 				D0D1212219E878CC005E4BAA /* Configuration */,
@@ -460,6 +466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				14DE826B1B1B4DFA00E1BAA4 /* CoverageReporter.swift in Sources */,
 				1401EBE81B14AFE2000D8737 /* Xcodebuild.swift in Sources */,
 				1401EBD51B11612C000D8737 /* Shell.swift in Sources */,
 				1401EBEA1B14B009000D8737 /* BuildSettings.swift in Sources */,
@@ -472,6 +479,7 @@
 			files = (
 				14DE82631B1B210700E1BAA4 /* XcodebuildTests.swift in Sources */,
 				14DE82611B1B0AA900E1BAA4 /* ShellTests.swift in Sources */,
+				14DE82671B1B4B3D00E1BAA4 /* CoverageReporterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
