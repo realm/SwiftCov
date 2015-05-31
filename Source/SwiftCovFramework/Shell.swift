@@ -60,16 +60,16 @@ public class Shell {
     }
 
     private func launchTask(task: NSTask) -> Result<String, TerminationStatus> {
-        if task.standardOutput.fileHandleForReading != nil {
-            task.standardOutput.fileHandleForReading.readabilityHandler = { fileHandle in
+        if let fileHandle = task.standardOutput.fileHandleForReading {
+            fileHandle.readabilityHandler = { fileHandle in
                 if let string = NSString(data: fileHandle.availableData, encoding: NSUTF8StringEncoding) {
                     fputs("\(string)", stdout)
                     self.outputString += string as String
                 }
             }
         }
-        if task.standardError.fileHandleForReading != nil {
-            task.standardError.fileHandleForReading.readabilityHandler = { fileHandle in
+        if let fileHandle = task.standardError.fileHandleForReading {
+            fileHandle.readabilityHandler = { fileHandle in
                 if let string = NSString(data: fileHandle.availableData, encoding: NSUTF8StringEncoding) {
                     fputs("\(string)", stderr)
                     self.outputString += string as String
@@ -81,11 +81,11 @@ public class Shell {
         task.waitUntilExit()
 
         task.terminationHandler = { task in
-            if task.standardOutput.fileHandleForReading != nil {
-                task.standardOutput.fileHandleForReading.readabilityHandler = nil
+            if let fileHandle = task.standardOutput.fileHandleForReading {
+                fileHandle.readabilityHandler = nil
             }
-            if task.standardError.fileHandleForReading != nil {
-                task.standardError.fileHandleForReading.readabilityHandler = nil
+            if let fileHandle = task.standardError.fileHandleForReading {
+                fileHandle.readabilityHandler = nil
             }
         }
 
