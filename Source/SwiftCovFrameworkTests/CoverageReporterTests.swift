@@ -47,8 +47,8 @@ class CoverageReporterTests: XCTestCase {
                     let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
 
                     XCTAssertEqual(
-                        NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil)!,
-                        NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil)!)
+                        dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
+                        dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)
                     XCTFail("Execution failure")
@@ -87,8 +87,8 @@ class CoverageReporterTests: XCTestCase {
                     let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
                     
                     XCTAssertEqual(
-                        NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil)!,
-                        NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil)!)
+                        dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
+                        dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)
                     XCTFail("Execution failure")
