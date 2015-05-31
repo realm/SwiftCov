@@ -20,11 +20,11 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testBuildSettings() {
-        let xcodebuild = Xcodebuild(argments: ["xcodebuild",
-                                               "test",
-                                               "-scheme", "SwiftCovFramework",
-                                               "-configuration", "Debug",
-                                               "-sdk", "macosx"])
+        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
+                                                "test",
+                                                "-scheme", "SwiftCovFramework",
+                                                "-configuration", "Debug",
+                                                "-sdk", "macosx"])
 
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
@@ -86,7 +86,10 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testExchangeArgument() {
-        var xcodebuild = Xcodebuild(argments: ["xcodebuild", "test", "-scheme", "SwiftCovFramework", "-configuration", "Debug", "-sdk", "macosx"])
+        var xcodebuild = Xcodebuild(arguments: ["xcodebuild", "test",
+                                                "-scheme", "SwiftCovFramework",
+                                                "-configuration", "Debug",
+                                                "-sdk", "macosx"])
         xcodebuild.exchangeArgumentAtIndex(0, argument: "build")
         xcodebuild.exchangeArgumentAtIndex(4, argument: "Release")
 
@@ -123,7 +126,11 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testAddArgument() {
-        var xcodebuild = Xcodebuild(argments: ["xcodebuild", "test", "-scheme", "SwiftCovFramework", "-configuration", "Debug", "-sdk", "macosx"])
+        var xcodebuild = Xcodebuild(arguments: ["xcodebuild",
+                                                "test",
+                                                "-scheme", "SwiftCovFramework",
+                                                "-configuration", "Debug",
+                                                "-sdk", "macosx"])
         xcodebuild.addArgument("-derivedDataPath")
         xcodebuild.addArgument("build")
 

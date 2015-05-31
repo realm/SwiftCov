@@ -25,13 +25,13 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
 
-        let xcodebuild = Xcodebuild(argments: ["xcodebuild",
-                                               "test",
-                                               "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
-                                               "-scheme", "ExampleFramework-iOS",
-                                               "-configuration", "Release",
-                                               "-sdk", "iphonesimulator",
-                                               "-derivedDataPath", temporaryDirectory])
+        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
+                                                "test",
+                                                "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
+                                                "-scheme", "ExampleFramework-iOS",
+                                                "-configuration", "Release",
+                                                "-sdk", "iphonesimulator",
+                                                "-derivedDataPath", temporaryDirectory])
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
             let buildSettings = BuildSettings(output: output.value)
@@ -66,13 +66,13 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
 
-        let xcodebuild = Xcodebuild(argments: ["xcodebuild",
-                                               "test",
-                                               "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
-                                               "-scheme", "ExampleFramework-Mac",
-                                               "-configuration", "Release",
-                                               "-sdk", "macosx",
-                                               "-derivedDataPath", temporaryDirectory])
+        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
+                                                "test",
+                                                "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
+                                                "-scheme", "ExampleFramework-Mac",
+                                                "-configuration", "Release",
+                                                "-sdk", "macosx",
+                                                "-derivedDataPath", temporaryDirectory])
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
             let buildSettings = BuildSettings(output: output.value)
