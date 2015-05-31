@@ -36,7 +36,7 @@ struct GenerateCommand: CommandType {
             println("Generate test code coverage files")
             println("Loading build settings...")
 
-            var xcodebuild = Xcodebuild(argments: arguments)
+            var xcodebuild = Xcodebuild(arguments: arguments, verbose: options.debug)
             let result = xcodebuild.showBuildSettings()
                 .map { BuildSettings(output: $0) }
                 .flatMap { buildSettings -> Result<BuildSettings, TerminationStatus> in
@@ -116,14 +116,16 @@ struct GenerateCommand: CommandType {
 struct GenerateOptions: OptionsType {
     let output: String
     let threshold: Int
+    let debug: Bool
 
-    static func create(output: String)(threshold: Int) -> GenerateOptions {
-        return self(output: output, threshold: threshold)
+    static func create(output: String)(threshold: Int)(debug: Bool) -> GenerateOptions {
+        return self(output: output, threshold: threshold, debug: debug)
     }
 
     static func evaluate(m: CommandMode) -> Result<GenerateOptions, CommandantError<SwiftCovError>> {
         return create
             <*> m <| Option(key: "output", defaultValue: "", usage: "Folder to output the coverage files to")
             <*> m <| Option(key: "threshold", defaultValue: 0, usage: "Threshold value of max hit count (for performance)")
+            <*> m <| Switch(flag: "d", key: "debug", usage: "Output very verbose progress messages")
     }
 }
