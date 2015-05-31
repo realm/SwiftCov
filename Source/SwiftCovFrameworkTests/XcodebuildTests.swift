@@ -20,7 +20,11 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testBuildSettings() {
-        var xcodebuild = Xcodebuild(argments: ["xcodebuild", "test", "-scheme", "SwiftCovFramework", "-configuration", "Debug", "-sdk", "macosx"])
+        let xcodebuild = Xcodebuild(argments: ["xcodebuild",
+                                               "test",
+                                               "-scheme", "SwiftCovFramework",
+                                               "-configuration", "Debug",
+                                               "-sdk", "macosx"])
 
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
