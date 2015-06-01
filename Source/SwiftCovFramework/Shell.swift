@@ -83,6 +83,24 @@ public class Shell {
             }
         }
 
+        if verbose {
+            println("Executing command:")
+            if let environment = environment {
+                for (k, v) in environment {
+                    println("\(k)=\"\(v)\" \\")
+                }
+            }
+            println("\"\(commandPath)\" \\")
+            for (index, argument) in enumerate(arguments) {
+                print("  \"\(argument)\"")
+                if index < arguments.count - 1 {
+                    println(" \\")
+                } else {
+                    println("\n")
+                }
+            }
+        }
+
         task.launch()
         task.waitUntilExit()
 
