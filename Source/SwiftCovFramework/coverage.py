@@ -2,6 +2,7 @@ import os
 import sys
 import io
 import subprocess
+import signal
 
 XCPATH = subprocess.check_output(['xcode-select', '--print-path']).strip()
 FWPATH = os.path.join(XCPATH, '../SharedFrameworks/LLDB.framework/Resources/Python')
@@ -167,10 +168,16 @@ def fild_all_files(directory):
         for file in files:
             yield os.path.join(root, file)
 
+def signal_handler(signum, frame):
+    print("Interrupted")
+    os._exit(1)
+
 def main():
     global XCPATH
     global debugger
 
+    signal.signal(signal.SIGINT, signal_handler)
+    
     if len(sys.argv) != 4:
         print('usage: python coverage.py <target> <sourceroot> <outputdir>')
         sys.exit(1)
