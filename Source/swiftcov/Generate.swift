@@ -10,6 +10,20 @@ import Commandant
 import Result
 import SwiftCovFramework
 
+extension NSString {
+    /**
+    Returns self represented as an absolute path.
+
+    :param: rootDirectory Absolute parent path if not already an absolute path.
+    */
+    public func absolutePathRepresentation(rootDirectory: String = NSFileManager.defaultManager().currentDirectoryPath) -> String {
+        if absolutePath {
+            return self as String
+        }
+        return NSString.pathWithComponents([rootDirectory, self]).stringByStandardizingPath
+    }
+}
+
 struct GenerateCommand: CommandType {
     typealias ClientError = SwiftCovError
     let verb = "generate"
@@ -19,7 +33,7 @@ struct GenerateCommand: CommandType {
         return GenerateOptions.evaluate(mode).flatMap { options in
             let arguments = Process.arguments
             if arguments.count < 4 {
-                return .failure(.UsageError(description: "Usage: swiftcov generate [swiftcov options] xcodebuild [xcodebuild options]"))
+                return .failure(.UsageError(description: "Usage: swiftcov generate [swiftcov options] xcodebuild [xcodebuild options] (-- [swift files])"))
             }
             let requiredArguments = [
                 "xcodebuild",
@@ -36,7 +50,17 @@ struct GenerateCommand: CommandType {
             println("Generate test code coverage files")
             println("Loading build settings...")
 
-            var xcodebuild = Xcodebuild(arguments: arguments, verbose: options.debug)
+            let doubleDashSplit = split(arguments, allowEmptySlices: true) { $0 == "--" }
+            let afterDoubleDash = flatMap(count(doubleDashSplit) == 2 ? true : nil) { _ in Array(doubleDashSplit[1]) }
+            let files = map(afterDoubleDash) { nonOptionalAfterDoubleDash in
+                return map(nonOptionalAfterDoubleDash) {
+                    ($0 as NSString).absolutePathRepresentation()
+                }
+            }
+            let beforeDoubleDash = Array(doubleDashSplit[0])
+            let xcodeBuildArguments = Array(split(beforeDoubleDash, allowEmptySlices: true) { $0 == "xcodebuild" }[1])
+
+            var xcodebuild = Xcodebuild(arguments: xcodeBuildArguments, verbose: options.debug)
             let result = xcodebuild.showBuildSettings()
                 .map { BuildSettings(output: $0) }
                 .flatMap { buildSettings -> Result<BuildSettings, TerminationStatus> in
@@ -47,7 +71,7 @@ struct GenerateCommand: CommandType {
                 }
                 .flatMap { buildSettings -> Result<String, TerminationStatus> in
                     println("Generating code coverage...")
-                    let coverageReporter = CoverageReporter(outputDirectory: options.output, threshold: options.threshold, verbose: options.debug)
+                    let coverageReporter = CoverageReporter(outputDirectory: options.output, threshold: options.threshold, verbose: options.debug, files: files)
                     return coverageReporter.runCoverageReport(buildSettings: buildSettings)
             }
 
