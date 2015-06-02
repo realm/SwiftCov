@@ -73,7 +73,7 @@ struct GenerateOptions: OptionsType {
     static func evaluate(m: CommandMode) -> Result<GenerateOptions, CommandantError<SwiftCovError>> {
         return create
             <*> m <| Option(key: "output", defaultValue: "", usage: "Folder to output the coverage files to")
-            <*> m <| Option(key: "threshold", defaultValue: 0, usage: "Threshold value of max hit count (for performance)")
+            <*> m <| Option(key: "threshold", defaultValue: 1, usage: "Threshold value of max hit count (for performance)")
             <*> m <| Option(key: "debug", defaultValue: false, usage: "Output very verbose progress messages")
     }
 }
