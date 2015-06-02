@@ -35,7 +35,7 @@ $ swiftcov generate \
 If you change the destination directory, specify the `output` options.
 If you think the coverage generation process is slow, you can specify the `threshold` option. It makes running faster to limit the count of the number of executions.
 
-**Currently, the default value of `threshold` option is 1 for performance reason. Since some test cases may take a very long time generating coverages, such as there are a lot of loops.**
+**Currently, the default value of threshold option is 1 for performance reasons. Since some test cases may take a very long time generating coverage data, especially if some code paths are frequently hit (as is the case with loops).**
 
 ```shell
 $ swiftcov generate --output ./coverage --threshold 1 \
