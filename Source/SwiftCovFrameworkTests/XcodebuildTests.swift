@@ -20,8 +20,7 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testBuildSettings() {
-        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
-                                                "test",
+        let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
                                                 "-configuration", "Debug",
                                                 "-sdk", "macosx"])
@@ -86,7 +85,7 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testExchangeArgument() {
-        var xcodebuild = Xcodebuild(arguments: ["xcodebuild", "test",
+        var xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
                                                 "-configuration", "Debug",
                                                 "-sdk", "macosx"])
@@ -126,8 +125,7 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testAddArgument() {
-        var xcodebuild = Xcodebuild(arguments: ["xcodebuild",
-                                                "test",
+        var xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
                                                 "-configuration", "Debug",
                                                 "-sdk", "macosx"])
