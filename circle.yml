@@ -3,4 +3,5 @@ machine:
     version: "6.3.1"
 test:
   override:
+    - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - script/cibuild
