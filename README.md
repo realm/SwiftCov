@@ -35,6 +35,8 @@ $ swiftcov generate \
 If you change the destination directory, specify the `output` options.
 If you think the coverage generation process is slow, you can specify the `threshold` option. It makes running faster to limit the count of the number of executions.
 
+**Currently, the default value of `threshold` option is 1 for performance reason. Since some test cases may take a very long time generating coverages, such as there are a lot of loops.**
+
 ```shell
 $ swiftcov generate --output ./coverage --threshold 1 \
   xcodebuild test \
@@ -95,6 +97,8 @@ It is that to trace the execution using LLDB.
 - Running on iOS devices is not supported (Simulator or OSX only)
 - Application projects are not supported (Framework projects only)
 - Running on Travis CI is not supported (It works on Circle CI!)
+- Debugging SwiftCov is not supported. If you launch SwiftCov from Xcode, it may fail. https://github.com/realm/SwiftCov/issues/6
+- Make sure you do not debug for the same target. It may fail since multiple debuggers cannot attach same target.
 
 ## License
 
