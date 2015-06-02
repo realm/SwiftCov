@@ -3,4 +3,7 @@ machine:
     version: "6.3.1"
 test:
   override:
+    - sudo chown :wheel "/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 7.1.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim"
+    - sudo chown :wheel "/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.1.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim"
+    - sudo chown :wheel "/Library/Developer/CoreSimulator/Profiles/Runtimes/iOS 8.2.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim"
     - script/cibuild
