@@ -29,8 +29,7 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
 
-        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
-                                                "test",
+        let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
                                                 "-scheme", "ExampleFramework-iOS",
                                                 "-configuration", "Release",
@@ -69,8 +68,7 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
 
-        let xcodebuild = Xcodebuild(arguments: ["xcodebuild",
-                                                "test",
+        let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
                                                 "-scheme", "ExampleFramework-Mac",
                                                 "-configuration", "Release",
