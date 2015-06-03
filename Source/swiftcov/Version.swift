@@ -8,8 +8,7 @@
 
 import Commandant
 import Result
-
-private let version = "0.1.0"
+import let SwiftCovFramework.SwiftCovFrameworkBundleIdentifier
 
 struct VersionCommand: CommandType {
     typealias ClientError = SwiftCovError
@@ -18,8 +17,9 @@ struct VersionCommand: CommandType {
 
     func run(mode: CommandMode) -> Result<(), CommandantError<SwiftCovError>> {
         switch mode {
-        case let .Arguments:
-            println(version)
+        case .Arguments:
+            let version = NSBundle(identifier: SwiftCovFrameworkBundleIdentifier)?.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
+            println(version!)
 
         default:
             break
