@@ -8,7 +8,7 @@
 
 import Commandant
 import Result
-import SwiftCovFramework
+import let SwiftCovFramework.SwiftCovFrameworkBundleIdentifier
 
 struct VersionCommand: CommandType {
     typealias ClientError = SwiftCovError
