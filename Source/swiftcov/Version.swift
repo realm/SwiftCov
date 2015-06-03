@@ -17,7 +17,7 @@ struct VersionCommand: CommandType {
 
     func run(mode: CommandMode) -> Result<(), CommandantError<SwiftCovError>> {
         switch mode {
-        case let .Arguments:
+        case .Arguments:
             let version = NSBundle(identifier: SwiftCovFrameworkBundleIdentifier)?.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
             println(version!)
 
