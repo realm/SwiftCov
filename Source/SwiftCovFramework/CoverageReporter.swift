@@ -9,6 +9,9 @@
 import Foundation
 import Result
 
+/// SwiftCovFramework’s bundle identifier.
+public let SwiftCovFrameworkBundleIdentifier = NSBundle(forClass: CoverageReporter.self).bundleIdentifier!
+
 public class CoverageReporter {
     private let outputDirectory: String
     private let threshold: Int
