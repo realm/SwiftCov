@@ -14,7 +14,7 @@ public struct Xcodebuild {
     private let verbose: Bool
 
     public init(arguments: [String], verbose: Bool = false) {
-        self.arguments = Array(split(arguments, allowEmptySlices: true) { $0 == "xcodebuild" }[1])
+        self.arguments = arguments
         self.verbose = verbose
     }
 

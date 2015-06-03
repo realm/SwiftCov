@@ -54,7 +54,7 @@ class CoverageFile:
 
 def setup_breakpoints(target, source_root):
     coverage_files = {}
-    for file in fild_all_files(source_root):
+    for file in swift_files(source_root):
         if file.endswith('.swift') and not file.endswith('Tests.swift'):
             coverage_file = CoverageFile(file)
             coverage_files[file] = coverage_file
@@ -66,6 +66,13 @@ def setup_breakpoints(target, source_root):
                 breakpoint.SetScriptCallbackFunction('breakpoint_callback')
 
     return coverage_files
+
+def swift_files(source_root):
+    env_files = os.getenv('SWIFTCOV_FILES').splitlines()
+    if len(env_files) > 0:
+        return env_files
+
+    return find_all_files(source_root)
 
 first_launch = True
 def breakpoint_callback(frame, location, dict):
@@ -162,7 +169,7 @@ def report_coverage(coverage_files, output_dir):
             fh.write('\n'.join(report))
             print("Created '%s'" % report_path)
 
-def fild_all_files(directory):
+def find_all_files(directory):
     for root, dirs, files in os.walk(directory):
         yield root
         for file in files:

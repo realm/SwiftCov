@@ -13,13 +13,15 @@ public class CoverageReporter {
     private let outputDirectory: String
     private let threshold: Int
     private let verbose: Bool
+    private let files: [String]?
 
-    public init(outputDirectory: String = "", threshold: Int = 0, verbose: Bool = false) {
+    public init(outputDirectory: String = "", threshold: Int = 0, verbose: Bool = false, files: [String]? = nil) {
         self.outputDirectory = outputDirectory
         self.threshold = threshold
         self.verbose = verbose
+        self.files = files
     }
-    
+
     public func runCoverageReport(buildSettings settings: BuildSettings) -> Result<String, TerminationStatus> {
         func buildSetting(key: String) -> String? {
             return settings.executable.buildSettings[key]
@@ -57,6 +59,7 @@ public class CoverageReporter {
                         let dyldFallbackLibraryPath = "\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib"
 
                         let env = [
+                            "SWIFTCOV_FILES": join("\n", files ?? []),
                             "SWIFTCOV_SDK_NAME": sdkName,
                             "SWIFTCOV_DYLD_FRAMEWORK_PATH": builtProductsDir,
                             "SWIFTCOV_DYLD_LIBRARY_PATH": builtProductsDir,
