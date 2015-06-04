@@ -9,10 +9,14 @@
 /* Begin PBXBuildFile section */
 		1401EC2A1B15141B000D8737 /* ExampleFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 1401EC291B15141B000D8737 /* ExampleFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		1401EC301B15141B000D8737 /* ExampleFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1401EC241B15141B000D8737 /* ExampleFramework.framework */; };
-		1401EC371B15141B000D8737 /* ExampleFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC361B15141B000D8737 /* ExampleFrameworkTests.swift */; };
+		1401EC371B15141B000D8737 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC361B15141B000D8737 /* CalculatorTests.swift */; };
 		1401EC411B151494000D8737 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC401B151494000D8737 /* Calculator.swift */; };
+		1499139D1B20F7E90079325B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499139C1B20F7E90079325B /* Networking.swift */; };
+		1499139E1B20F7E90079325B /* Networking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499139C1B20F7E90079325B /* Networking.swift */; };
+		149913A01B20F92B0079325B /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499139F1B20F92B0079325B /* NetworkingTests.swift */; };
+		149913A11B20F92B0079325B /* NetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499139F1B20F92B0079325B /* NetworkingTests.swift */; };
 		14DE827C1B1B586E00E1BAA4 /* ExampleFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 14DE82711B1B586D00E1BAA4 /* ExampleFramework.framework */; };
-		14DE828A1B1B5A0400E1BAA4 /* ExampleFrameworkTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC361B15141B000D8737 /* ExampleFrameworkTests.swift */; };
+		14DE828A1B1B5A0400E1BAA4 /* CalculatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC361B15141B000D8737 /* CalculatorTests.swift */; };
 		14DE828B1B1B5A1F00E1BAA4 /* Calculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EC401B151494000D8737 /* Calculator.swift */; };
 		14DE82B31B1B66D400E1BAA4 /* ExampleFramework.h in Headers */ = {isa = PBXBuildFile; fileRef = 1401EC291B15141B000D8737 /* ExampleFramework.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -40,8 +44,10 @@
 		1401EC291B15141B000D8737 /* ExampleFramework.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ExampleFramework.h; sourceTree = "<group>"; };
 		1401EC2F1B15141B000D8737 /* ExampleFrameworkTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = ExampleFrameworkTests.xctest; path = ExampleFrameworkiOSTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1401EC351B15141B000D8737 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		1401EC361B15141B000D8737 /* ExampleFrameworkTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleFrameworkTests.swift; sourceTree = "<group>"; };
+		1401EC361B15141B000D8737 /* CalculatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalculatorTests.swift; sourceTree = "<group>"; };
 		1401EC401B151494000D8737 /* Calculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Calculator.swift; sourceTree = "<group>"; };
+		1499139C1B20F7E90079325B /* Networking.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Networking.swift; sourceTree = "<group>"; };
+		1499139F1B20F92B0079325B /* NetworkingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingTests.swift; sourceTree = "<group>"; };
 		14DE82711B1B586D00E1BAA4 /* ExampleFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ExampleFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		14DE827B1B1B586E00E1BAA4 /* ExampleFramework-MacTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "ExampleFramework-MacTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -105,6 +111,7 @@
 			children = (
 				1401EC291B15141B000D8737 /* ExampleFramework.h */,
 				1401EC401B151494000D8737 /* Calculator.swift */,
+				1499139C1B20F7E90079325B /* Networking.swift */,
 				1401EC271B15141B000D8737 /* Supporting Files */,
 			);
 			path = ExampleFramework;
@@ -121,7 +128,8 @@
 		1401EC331B15141B000D8737 /* ExampleFrameworkTests */ = {
 			isa = PBXGroup;
 			children = (
-				1401EC361B15141B000D8737 /* ExampleFrameworkTests.swift */,
+				1401EC361B15141B000D8737 /* CalculatorTests.swift */,
+				1499139F1B20F92B0079325B /* NetworkingTests.swift */,
 				1401EC341B15141B000D8737 /* Supporting Files */,
 			);
 			path = ExampleFrameworkTests;
@@ -309,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1401EC411B151494000D8737 /* Calculator.swift in Sources */,
+				1499139D1B20F7E90079325B /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +325,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1401EC371B15141B000D8737 /* ExampleFrameworkTests.swift in Sources */,
+				1401EC371B15141B000D8737 /* CalculatorTests.swift in Sources */,
+				149913A01B20F92B0079325B /* NetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +335,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				14DE828B1B1B5A1F00E1BAA4 /* Calculator.swift in Sources */,
+				1499139E1B20F7E90079325B /* Networking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +343,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				14DE828A1B1B5A0400E1BAA4 /* ExampleFrameworkTests.swift in Sources */,
+				14DE828A1B1B5A0400E1BAA4 /* CalculatorTests.swift in Sources */,
+				149913A11B20F92B0079325B /* NetworkingTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,9 +10,9 @@ import XCTest
 import SwiftCovFramework
 
 class CoverageReporterTests: XCTestCase {
-    let reportFilename = "Calculator.swift.gcov"
-    var fixtureFilePath: String {
-        return "./Examples/ExampleFramework/results/" + reportFilename
+    let reportFilenames = ["Calculator.swift.gcov", "Networking.swift.gcov"]
+    var fixtureFilePaths: [String] {
+        return reportFilenames.map { "./Examples/ExampleFramework/results/" + $0 }
     }
 
     override func setUp() {
@@ -27,7 +27,7 @@ class CoverageReporterTests: XCTestCase {
         let temporaryDirectory = NSTemporaryDirectory().stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
         NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
 
-        let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
+        let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
@@ -43,11 +43,15 @@ class CoverageReporterTests: XCTestCase {
             case .Success:
                 switch reporter.runCoverageReport(buildSettings: buildSettings) {
                 case .Success:
-                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
-
-                    XCTAssertEqual(
-                        dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
-                        dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                    Array(zip(reportFilenames, fixtureFilePaths))
+                        .map { (reportFilename, fixtureFilePath) -> (String, String) in
+                            return (temporaryDirectory.stringByAppendingPathComponent(reportFilename), fixtureFilePath)
+                        }
+                        .map { (reportFilePath, fixtureFilePath) in
+                            XCTAssertEqual(
+                                dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
+                                dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                    }
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)
                     XCTFail("Execution failure")
@@ -66,7 +70,7 @@ class CoverageReporterTests: XCTestCase {
         let temporaryDirectory = NSTemporaryDirectory().stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
         NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
 
-        let reporter = CoverageReporter(outputDirectory: temporaryDirectory)
+        let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
@@ -82,11 +86,15 @@ class CoverageReporterTests: XCTestCase {
             case .Success:
                 switch reporter.runCoverageReport(buildSettings: buildSettings) {
                 case .Success:
-                    let reportFilePath = temporaryDirectory.stringByAppendingPathComponent(reportFilename)
-                    
-                    XCTAssertEqual(
-                        dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
-                        dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                    Array(zip(reportFilenames, fixtureFilePaths))
+                        .map { (reportFilename, fixtureFilePath) -> (String, String) in
+                            return (temporaryDirectory.stringByAppendingPathComponent(reportFilename), fixtureFilePath)
+                        }
+                        .map { (reportFilePath, fixtureFilePath) in
+                            XCTAssertEqual(
+                                dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
+                                dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                    }
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)
                     XCTFail("Execution failure")
