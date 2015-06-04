@@ -219,6 +219,7 @@ def main():
                        'DYLD_FALLBACK_FRAMEWORK_PATH=%s' % os.getenv('SWIFTCOV_DYLD_FALLBACK_FRAMEWORK_PATH'),
                        'DYLD_FALLBACK_LIBRARY_PATH=%s' % os.getenv('SWIFTCOV_DYLD_FALLBACK_LIBRARY_PATH'),
                        'DYLD_ROOT_PATH=%s' % os.getenv('SWIFTCOV_DYLD_ROOT_PATH'),
+                       'XPC_SIMULATOR_LAUNCHD_NAME=%s' % os.getenv('SWIFTCOV_XPC_SIMULATOR_LAUNCHD_NAME'),
                        'LC_ALL=en_US.UTF-8']
     else:
         environment = ['DYLD_FRAMEWORK_PATH=%s' %  os.getenv('SWIFTCOV_DYLD_FRAMEWORK_PATH'),

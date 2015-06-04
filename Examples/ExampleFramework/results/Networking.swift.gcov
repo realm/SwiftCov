@@ -1,0 +1,38 @@
+    -:    0:Source:/Users/katsumi/Dropbox/Xcode Projects/SwiftCov/Examples/ExampleFramework/ExampleFramework/Networking.swift
+    -:    0:Runs:1
+    -:    0:Programs:1
+    -:    1://
+    -:    2://  Networking.swift
+    -:    3://  ExampleFramework
+    -:    4://
+    -:    5://  Created by Kishikawa Katsumi on 2015/06/04.
+    -:    6://  Copyright (c) 2015 Realm. All rights reserved.
+    -:    7://
+    -:    8:
+    -:    9:import Foundation
+    -:   10:
+    -:   11:public class Networking {
+    -:   12:    let requesetURL: NSURL
+    -:   13:
+    -:   14:    public init() {
+#####:   15:        if let URL = NSURL(string: "http://www.google.com") {
+#####:   16:            requesetURL = URL
+#####:   17:        } else {
+#####:   18:            fatalError("Unknown error occurred")
+    -:   19:        }
+    -:   20:    }
+    -:   21:
+    -:   22:    public init(URL: NSURL) {
+    1:   23:        requesetURL = URL
+    -:   24:    }
+    -:   25:
+    -:   26:    public func request(completion:(data: NSData?, response: NSURLResponse, error: NSError?) -> Void) -> Void {
+    1:   27:        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+    1:   28:        var request = NSMutableURLRequest(URL: requesetURL)
+    -:   29:
+    2:   30:        session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
+    1:   31:            completion(data: data, response: response, error: error)
+    2:   32:        }).resume()
+    -:   33:    }
+    -:   34:
+    -:   35:}

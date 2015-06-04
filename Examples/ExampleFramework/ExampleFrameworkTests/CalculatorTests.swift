@@ -9,7 +9,7 @@
 import XCTest
 import ExampleFramework
 
-class ExampleFrameworkTests: XCTestCase {
+class CalculatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
