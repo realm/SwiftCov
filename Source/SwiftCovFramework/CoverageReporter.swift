@@ -61,7 +61,7 @@ public class CoverageReporter {
                         let dyldFallbackFrameworkPath = "/Library/Frameworks:/Network/Library/Frameworks:/System/Library/Frameworks:\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/Library/PrivateFrameworks:\(xcodePath)/Library/PrivateFrameworks:\(xcodePath)/../OtherFrameworks:\(xcodePath)/../SharedFrameworks:\(xcodePath)/Library/Frameworks:\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/Library/Frameworks"
                         let dyldFallbackLibraryPath = "\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib"
 
-                        let env = [
+                        var env = [
                             "SWIFTCOV_FILES": join("\n", files ?? []),
                             "SWIFTCOV_SDK_NAME": sdkName,
                             "SWIFTCOV_DYLD_FRAMEWORK_PATH": builtProductsDir,
@@ -71,6 +71,24 @@ public class CoverageReporter {
                             "SWIFTCOV_DYLD_ROOT_PATH": sdkroot,
                             "SWIFTCOV_HIT_COUNT": "\(threshold)"
                         ]
+
+                        if sdkName.hasPrefix("iphone") {
+                            let bootedDevice = SimCtl(verbose: verbose).list()
+                                .flatMap { SimCtl.parseOutput($0) }
+                                .map { (_, _, devices) -> [Device] in
+                                    return devices
+                                }
+                                .map { $0.filter { $0.booted }.first }
+
+                            switch bootedDevice {
+                            case let .Success(bootedDevice):
+                                if let bootedDevice = bootedDevice.value {
+                                    env["SWIFTCOV_XPC_SIMULATOR_LAUNCHD_NAME"] = "com.apple.CoreSimulator.SimDevice.\(bootedDevice.UDID).launchd_sim"
+                                }
+                            case .Failure:
+                                break
+                            }
+                        }
                         
                         return Shell(commandPath: "/usr/bin/python", arguments: [scriptPath, targetPath, srcroot, outputDir], environment: env, verbose: verbose).run()
                 }
