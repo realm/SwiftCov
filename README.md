@@ -43,7 +43,7 @@ If you think the coverage generation process is slow, you can specify the `thres
 ```shell
 $ swiftcov generate --output ./coverage --threshold 1 \
   xcodebuild test \
-  -project Example.xcodeproj -scheme 'Example'
+  -project Example.xcodeproj -scheme 'Example' \
   -configuration Release -sdk iphonesimulator
 ```
 
@@ -52,7 +52,16 @@ $ swiftcov generate --output ./coverage --threshold 1 \
 - `--output OUTPUT_DIR` specify output directory for generated coverage files.
 - `--threshold LIMIT_COUNT` specify the maximum number of hits you wish to measure. Reducing this number can drastically speed up SwiftCov.
 - `--debug` Output very verbose progress messages.
-- `-- [swift files]` Pass a space-separated list of files for which to measure code coverage, with either relative or absolute paths, after the `--` at the end of your command.
+- `-- [swift files]` Pass a space-separated list of files for which to measure code coverage, with either relative or absolute paths, after the `--` at the end of your command.  
+    *e.g.*
+
+    ```shell
+    $ swiftcov generate --output ./coverage --threshold 1 \
+      xcodebuild test \
+      -project Example.xcodeproj -scheme 'Example' \
+      -configuration Release -sdk iphonesimulator \
+      -- ./ExampleFramework/*.swift
+    ```
 
 ### help
 
