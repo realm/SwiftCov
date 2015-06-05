@@ -3,7 +3,7 @@ GEM
   specs:
     commander (4.3.4)
       highline (~> 1.7.2)
-    coveralls-gcov (0.1.0)
+    coveralls-gcov (0.1.2)
       commander
     highline (1.7.2)
 
