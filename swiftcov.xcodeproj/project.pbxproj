@@ -11,6 +11,7 @@
 		1401EBDB1B11657C000D8737 /* coverage.py in Resources */ = {isa = PBXBuildFile; fileRef = 1401EBD61B116504000D8737 /* coverage.py */; };
 		1401EBE81B14AFE2000D8737 /* Xcodebuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */; };
 		1401EBEA1B14B009000D8737 /* BuildSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1401EBE91B14B009000D8737 /* BuildSettings.swift */; };
+		14052FE61B219D29009E733C /* SimCtlTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14052FE51B219D29009E733C /* SimCtlTests.swift */; };
 		1499139B1B20C62B0079325B /* SimCtl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1499139A1B20C62B0079325B /* SimCtl.swift */; };
 		14DE82611B1B0AA900E1BAA4 /* ShellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */; };
 		14DE82631B1B210700E1BAA4 /* XcodebuildTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */; };
@@ -81,6 +82,7 @@
 		1401EBD61B116504000D8737 /* coverage.py */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.python; path = coverage.py; sourceTree = "<group>"; };
 		1401EBE71B14AFE2000D8737 /* Xcodebuild.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Xcodebuild.swift; sourceTree = "<group>"; };
 		1401EBE91B14B009000D8737 /* BuildSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildSettings.swift; sourceTree = "<group>"; };
+		14052FE51B219D29009E733C /* SimCtlTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimCtlTests.swift; sourceTree = "<group>"; };
 		1499139A1B20C62B0079325B /* SimCtl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimCtl.swift; sourceTree = "<group>"; };
 		14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShellTests.swift; sourceTree = "<group>"; };
 		14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = XcodebuildTests.swift; sourceTree = "<group>"; };
@@ -294,6 +296,7 @@
 			children = (
 				14DE82661B1B4B3D00E1BAA4 /* CoverageReporterTests.swift */,
 				14DE82621B1B210700E1BAA4 /* XcodebuildTests.swift */,
+				14052FE51B219D29009E733C /* SimCtlTests.swift */,
 				14DE82601B1B0AA900E1BAA4 /* ShellTests.swift */,
 				D0D1212219E878CC005E4BAA /* Configuration */,
 				D0D1217C19E87B05005E4BAA /* Supporting Files */,
@@ -484,6 +487,7 @@
 				14DE82631B1B210700E1BAA4 /* XcodebuildTests.swift in Sources */,
 				14DE82611B1B0AA900E1BAA4 /* ShellTests.swift in Sources */,
 				14DE82671B1B4B3D00E1BAA4 /* CoverageReporterTests.swift in Sources */,
+				14052FE61B219D29009E733C /* SimCtlTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
