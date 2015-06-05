@@ -87,6 +87,33 @@ $ gcovr --root . --use-gcov-files --html --html-details --output coverage.html -
 
 See [the generated coverage file](Examples/ExampleFramework/results/coverage.html).
 
+### Send coverage information to [coveralls.io](https://coveralls.io/).
+
+- [realm/SwiftCov | Coveralls - Test Coverage History & Statistics](https://coveralls.io/r/realm/SwiftCov)
+
+Use [coveralls-gcov](https://github.com/kishikawakatsumi/coveralls-gcov).
+
+```ruby
+# Gemfile
+source "https://rubygems.org"
+
+gem "coveralls-gcov"
+```
+
+```yaml
+# cirlce.yml
+dependencies:
+  override:
+    - bundle install
+test:
+  override:
+    - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
+    - xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+    - swiftcov generage --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+  post:
+    - bundle exec coveralls-gcov --repo-token REPO_TOKEN --no-gcov
+```
+
 ### How SwiftCov works
 
 SwiftCov traces the execution of your test code using LLDB by following these steps:
