@@ -28,7 +28,7 @@ test: clean bootstrap
 	$(BUILD_TOOL) $(XCODEFLAGS) test
 
 coverage:
-	swiftcov generate --output coverage --threshold 0 $(BUILD_TOOL) $(XCODEFLAGS) test -- ./Source/SwiftCovFramework/BuildSettings.swift ./Source/SwiftCovFramework/CoverageReporter.swift ./Source/SwiftCovFramework/Shell.swift ./Source/SwiftCovFramework/SimCtl.swift ./Source/SwiftCovFramework/Xcodebuild.swift
+	swiftcov generate --output coverage --threshold 0 $(BUILD_TOOL) $(XCODEFLAGS) test -- ./Source/SwiftCovFramework/*.swift
 
 clean:
 	rm -f "$(OUTPUT_PACKAGE)"
