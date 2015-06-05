@@ -2,6 +2,8 @@
 
 A tool to generate test code coverage information for Swift.
 
+[![Coverage Status](https://coveralls.io/repos/realm/SwiftCov/badge.svg)](https://coveralls.io/r/realm/SwiftCov)
+
 ## Installation
 
 Install the `swiftcov` command line tool by running `git clone` for this repo followed by `make install` in the root directory.

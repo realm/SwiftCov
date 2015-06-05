@@ -1,7 +1,14 @@
 machine:
   xcode:
     version: "6.3.1"
+dependencies:
+  override:
+    - bundle install
+    - make install
 test:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - script/cibuild
+    - make coverage
+  post:
+    - bundle exec coveralls-gcov --repo-token XVWMzBFVchIyZnGc4qmkY6kwLorw4dvZW --no-gcov

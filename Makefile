@@ -2,7 +2,7 @@ TEMPORARY_FOLDER?=/tmp/SwiftCov.dst
 PREFIX?=/usr/local
 BUILD_TOOL?=xcodebuild
 
-XCODEFLAGS=-workspace 'SwiftCov.xcworkspace' -scheme 'swiftcov' DSTROOT=$(TEMPORARY_FOLDER)
+XCODEFLAGS=-workspace 'SwiftCov.xcworkspace' -scheme 'swiftcov' -configuration 'Release' -sdk macosx DSTROOT=$(TEMPORARY_FOLDER)
 
 BUILT_BUNDLE=$(TEMPORARY_FOLDER)/Applications/swiftcov.app
 SOURCEKITTEN_FRAMEWORK_BUNDLE=$(BUILT_BUNDLE)/Contents/Frameworks/SwiftCovFramework.framework
@@ -26,6 +26,9 @@ bootstrap:
 
 test: clean bootstrap
 	$(BUILD_TOOL) $(XCODEFLAGS) test
+
+coverage:
+	swiftcov generate --output coverage --threshold 0 $(BUILD_TOOL) $(XCODEFLAGS) test -- ./Source/SwiftCovFramework/BuildSettings.swift ./Source/SwiftCovFramework/CoverageReporter.swift ./Source/SwiftCovFramework/Shell.swift ./Source/SwiftCovFramework/SimCtl.swift ./Source/SwiftCovFramework/Xcodebuild.swift
 
 clean:
 	rm -f "$(OUTPUT_PACKAGE)"
