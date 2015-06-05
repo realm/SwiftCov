@@ -2,6 +2,7 @@
 
 A tool to generate test code coverage information for Swift.
 
+[![Circle CI](https://circleci.com/gh/realm/SwiftCov/tree/master.svg?style=svg)](https://circleci.com/gh/realm/SwiftCov/tree/master)
 [![Coverage Status](https://coveralls.io/repos/realm/SwiftCov/badge.svg)](https://coveralls.io/r/realm/SwiftCov)
 
 ## Installation
