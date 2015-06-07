@@ -96,6 +96,21 @@ $ gcovr --root . --use-gcov-files --html --html-details --output coverage.html -
 
 See [the generated coverage file](Examples/ExampleFramework/results/coverage.html).
 
+### Send coverage information to [codecov.io](https://codecov.io/).
+
+Use [codecov-bash](https://github.com/codecov/codecov-bash) global uploader.
+
+```yaml
+# cirlce.yml
+test:
+  override:
+    - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
+    - xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+    - swiftcov generage --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+  post:
+    - bash <(curl -s https://codecov.io/bash)
+```
+
 ### Send coverage information to [coveralls.io](https://coveralls.io/).
 
 - [realm/SwiftCov | Coveralls - Test Coverage History & Statistics](https://coveralls.io/r/realm/SwiftCov)
