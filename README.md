@@ -106,7 +106,7 @@ test:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
-    - swiftcov generage --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+    - swiftcov generate --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
   post:
     - bash <(curl -s https://codecov.io/bash)
 ```
@@ -133,7 +133,7 @@ test:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
     - xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
-    - swiftcov generage --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
+    - swiftcov generate --output coverage xcodebuild test -project Example.xcodeproj -scheme 'Example' -configuration Release -sdk iphonesimulator
   post:
     - bundle exec coveralls-gcov --repo-token REPO_TOKEN --no-gcov
 ```
