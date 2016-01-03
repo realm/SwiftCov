@@ -138,7 +138,7 @@ def report_coverage(coverage_files, output_dir):
         report.append('%s:%s:Programs:%d' % ('-'.rjust(5), '0'.rjust(5), coverage_file.program_count))
 
         actualLines = 0
-        execlutedLines = 0
+        executedLines = 0
 
         for index, line in enumerate(coverage_file.lines):
             coverage_data = coverage_file.coverage_data(index + 1)
@@ -153,12 +153,12 @@ def report_coverage(coverage_files, output_dir):
             else:
                 count = str(coverage_data.count)
                 actualLines += 1
-                execlutedLines += 1
+                executedLines += 1
 
             report.append('%s:%s:%s' % (count.rjust(5), str(index + 1).rjust(5), line))
 
         if actualLines > 0:
-            print('Lines executed: %s of %d' % ('{percent:.2%}'.format(percent = float(execlutedLines) / float(actualLines)), actualLines))
+            print('Lines executed: %s of %d' % ('{percent:.2%}'.format(percent = float(executedLines) / float(actualLines)), actualLines))
         else:
             print('Lines executed: 0.00% of 0')
 
