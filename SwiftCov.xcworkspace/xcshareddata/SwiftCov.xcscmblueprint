@@ -1,0 +1,44 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "F279C6E8AF4FC2EB4BEB1AFF111FE1407D8830AA",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : 0,
+    "F279C6E8AF4FC2EB4BEB1AFF111FE1407D8830AA" : 0,
+    "D23C0CEAADB77074FDA4459000068A7940EB7AD0" : 0,
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "5F862A64-9A71-4CAA-B8B9-050C505D3205",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E084C86B03F81D63323C9E7510697EA528A758C7" : "SwiftCov\/Carthage\/Checkouts\/Commandant\/Carthage\/Checkouts\/xcconfigs\/",
+    "F279C6E8AF4FC2EB4BEB1AFF111FE1407D8830AA" : "SwiftCov\/",
+    "D23C0CEAADB77074FDA4459000068A7940EB7AD0" : "SwiftCov\/Carthage\/Checkouts\/Commandant\/",
+    "956D2B21DD155C49504BB67697A67F7C5351A353" : "SwiftCov\/Carthage\/Checkouts\/Result\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "SwiftCov",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "SwiftCov.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/antitypical\/Result.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "956D2B21DD155C49504BB67697A67F7C5351A353"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Carthage\/Commandant.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D23C0CEAADB77074FDA4459000068A7940EB7AD0"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jspahrsummers\/xcconfigs.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E084C86B03F81D63323C9E7510697EA528A758C7"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:realm\/SwiftCov.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "F279C6E8AF4FC2EB4BEB1AFF111FE1407D8830AA"
+    }
+  ]
+}
