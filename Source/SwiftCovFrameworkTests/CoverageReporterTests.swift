@@ -21,6 +21,7 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
+        NSFileManager.defaultManager().changeCurrentDirectoryPath((((__FILE__ as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent)
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
                                                 "-scheme", "ExampleFramework-iOS",
@@ -64,6 +65,7 @@ class CoverageReporterTests: XCTestCase {
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
+        NSFileManager.defaultManager().changeCurrentDirectoryPath((((__FILE__ as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent)
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-project", "./Examples/ExampleFramework/ExampleFramework.xcodeproj",
                                                 "-scheme", "ExampleFramework-Mac",

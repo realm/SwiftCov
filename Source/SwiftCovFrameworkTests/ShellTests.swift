@@ -55,6 +55,7 @@ class ShellTests: XCTestCase {
     }
 
     func testCommandWithWorkingDirectoryPath() {
+        NSFileManager.defaultManager().changeCurrentDirectoryPath((((__FILE__ as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent)
         let command = Shell(commandPath: "/bin/ls", workingDirectoryPath: "./Carthage")
         switch command.output() {
         case let .Success(output):

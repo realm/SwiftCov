@@ -11,6 +11,7 @@ import SwiftCovFramework
 
 class XcodebuildTests: XCTestCase {
     func testBuildSettings() {
+        NSFileManager.defaultManager().changeCurrentDirectoryPath((((__FILE__ as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent)
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
                                                 "-configuration", "Debug",
@@ -116,6 +117,7 @@ class XcodebuildTests: XCTestCase {
     }
 
     func testAddArgument() {
+        NSFileManager.defaultManager().changeCurrentDirectoryPath((((__FILE__ as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent as NSString).stringByDeletingLastPathComponent)
         var xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
                                                 "-configuration", "Debug",
