@@ -14,7 +14,7 @@ extension NSString {
     /**
     Returns self represented as an absolute path.
 
-    :param: rootDirectory Absolute parent path if not already an absolute path.
+    - parameter rootDirectory: Absolute parent path if not already an absolute path.
     */
     public func absolutePathRepresentation(rootDirectory: String = NSFileManager.defaultManager().currentDirectoryPath) -> String {
         if absolutePath {
@@ -91,7 +91,7 @@ struct GenerateOptions: OptionsType {
     let debug: Bool
 
     static func create(output: String)(threshold: Int)(debug: Bool) -> GenerateOptions {
-        return self(output: output, threshold: threshold, debug: debug)
+        return self.init(output: output, threshold: threshold, debug: debug)
     }
 
     static func evaluate(m: CommandMode) -> Result<GenerateOptions, CommandantError<SwiftCovError>> {

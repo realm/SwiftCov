@@ -10,7 +10,7 @@ import Commandant
 import Box
 
 /// Possible errors within SwiftCov.
-enum SwiftCovError: Printable {
+enum SwiftCovError: CustomStringConvertible {
     /// One or more argument was invalid.
     case InvalidArgument(description: String)
 

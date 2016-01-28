@@ -42,15 +42,18 @@ public class CoverageReporter {
             let objectFileDirNormal = buildSetting("OBJECT_FILE_DIR_normal"),
             let currentArch = buildSetting("CURRENT_ARCH"),
             let scriptPath = NSBundle(forClass: Shell.self).pathForResource("coverage", ofType: "py") {
-                let targetPath = builtProductsDir.stringByAppendingPathComponent(fullProductName)
+                let targetPath = (builtProductsDir as NSString).stringByAppendingPathComponent(fullProductName)
                 let outputDir: String
                 if outputDirectory.isEmpty {
-                    outputDir = objectFileDirNormal.stringByAppendingPathComponent(currentArch)
+                    outputDir = (objectFileDirNormal as NSString).stringByAppendingPathComponent(currentArch)
                 } else {
                     let fileManager = NSFileManager.defaultManager()
                     var isDirectory: ObjCBool = false
                     if !fileManager.fileExistsAtPath(outputDirectory, isDirectory: &isDirectory) || !isDirectory {
-                        fileManager.createDirectoryAtPath(outputDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
+                        do {
+                            try fileManager.createDirectoryAtPath(outputDirectory, withIntermediateDirectories: true, attributes: nil)
+                        } catch _ {
+                        }
                     }
                     outputDir = outputDirectory
                 }

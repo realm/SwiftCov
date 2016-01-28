@@ -85,8 +85,8 @@ public struct DeviceType {
     public let identifier: String
 
     internal static func parseLine(line: String) -> DeviceType? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
                 if let match = match as? NSTextCheckingResult {
@@ -107,8 +107,8 @@ public struct Runtime {
     public let identifier: String
 
     internal static func parseLine(line: String) -> Runtime? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
                 if let match = match as? NSTextCheckingResult {
@@ -130,8 +130,8 @@ public struct Device {
     public let booted: Bool
 
     internal static func parseLine(line: String) -> Device? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
                 if let match = match as? NSTextCheckingResult {

@@ -24,8 +24,11 @@ class CoverageReporterTests: XCTestCase {
     }
 
     func testGenerateCoverageReportIOS() {
-        let temporaryDirectory = NSTemporaryDirectory().stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
-        NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
+        let temporaryDirectory = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
+        do {
+            try NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil)
+        } catch _ {
+        }
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
@@ -45,12 +48,12 @@ class CoverageReporterTests: XCTestCase {
                 case .Success:
                     Array(zip(reportFilenames, fixtureFilePaths))
                         .map { (reportFilename, fixtureFilePath) -> (String, String) in
-                            return (temporaryDirectory.stringByAppendingPathComponent(reportFilename), fixtureFilePath)
+                            return ((temporaryDirectory as NSString).stringByAppendingPathComponent(reportFilename), fixtureFilePath)
                         }
                         .map { (reportFilePath, fixtureFilePath) in
                             XCTAssertEqual(
-                                dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
-                                dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                                ((try! NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding)) as String).characters.split { $0 == "\n" }.map { String($0) }.dropFirst(),
+                                ((try! NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding)) as String).characters.split { $0 == "\n" }.map { String($0) }.dropFirst())
                     }
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)
@@ -67,8 +70,11 @@ class CoverageReporterTests: XCTestCase {
     }
 
     func testGenerateCoverageReportOSX() {
-        let temporaryDirectory = NSTemporaryDirectory().stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
-        NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
+        let temporaryDirectory = (NSTemporaryDirectory() as NSString).stringByAppendingPathComponent(NSProcessInfo().globallyUniqueString)
+        do {
+            try NSFileManager().createDirectoryAtPath(temporaryDirectory, withIntermediateDirectories: true, attributes: nil)
+        } catch _ {
+        }
 
         let reporter = CoverageReporter(outputDirectory: temporaryDirectory, threshold: 0)
 
@@ -88,12 +94,12 @@ class CoverageReporterTests: XCTestCase {
                 case .Success:
                     Array(zip(reportFilenames, fixtureFilePaths))
                         .map { (reportFilename, fixtureFilePath) -> (String, String) in
-                            return (temporaryDirectory.stringByAppendingPathComponent(reportFilename), fixtureFilePath)
+                            return ((temporaryDirectory as NSString).stringByAppendingPathComponent(reportFilename), fixtureFilePath)
                         }
                         .map { (reportFilePath, fixtureFilePath) in
                             XCTAssertEqual(
-                                dropFirst(split(NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }),
-                                dropFirst(split(NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding, error: nil) as! String) { $0 == "\n" }))
+                                ((try! NSString(contentsOfFile: reportFilePath, encoding: NSUTF8StringEncoding)) as String).characters.split { $0 == "\n" }.map { String($0) }.dropFirst(),
+                                ((try! NSString(contentsOfFile: fixtureFilePath, encoding: NSUTF8StringEncoding)) as String).characters.split { $0 == "\n" }.map { String($0) }.dropFirst())
                     }
                 case let .Failure(error):
                     XCTAssertNotEqual(error.value, EXIT_SUCCESS)

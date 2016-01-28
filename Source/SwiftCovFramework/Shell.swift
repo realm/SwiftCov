@@ -84,19 +84,19 @@ public class Shell {
         }
 
         if verbose {
-            println("Executing command:")
+            print("Executing command:")
             if let environment = environment {
                 for (k, v) in environment {
-                    println("\(k)=\"\(v)\" \\")
+                    print("\(k)=\"\(v)\" \\")
                 }
             }
-            println("\"\(commandPath)\" \\")
-            for (index, argument) in enumerate(arguments) {
-                print("  \"\(argument)\"")
+            print("\"\(commandPath)\" \\")
+            for (index, argument) in arguments.enumerate() {
+                print("  \"\(argument)\"", terminator: "")
                 if index < arguments.count - 1 {
-                    println(" \\")
+                    print(" \\")
                 } else {
-                    println("\n")
+                    print("\n")
                 }
             }
         }
