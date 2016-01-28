@@ -10,22 +10,13 @@ import XCTest
 import SwiftCovFramework
 
 class ShellTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-    }
-    
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testCommand() {
         let command = Shell(commandPath: "/bin/echo")
         switch command.output() {
         case let .Success(output):
-            XCTAssertEqual(output.value, "\n")
+            XCTAssertEqual(output, "\n")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -34,9 +25,9 @@ class ShellTests: XCTestCase {
         let command = Shell(commandPath: "/bin/echo", arguments: ["foo"])
         switch command.output() {
         case let .Success(output):
-            XCTAssertEqual(output.value, "foo\n")
+            XCTAssertEqual(output, "foo\n")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -45,9 +36,9 @@ class ShellTests: XCTestCase {
         let command = Shell(commandPath: "/bin/echo", arguments: ["foo", "bar"])
         switch command.output() {
         case let .Success(output):
-            XCTAssertEqual(output.value, "foo bar\n")
+            XCTAssertEqual(output, "foo bar\n")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -56,9 +47,9 @@ class ShellTests: XCTestCase {
         let command = Shell(commandPath: "/bin/echo", arguments: ["-n", "foo"])
         switch command.output() {
         case let .Success(output):
-            XCTAssertEqual(output.value, "foo")
+            XCTAssertEqual(output, "foo")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -67,9 +58,9 @@ class ShellTests: XCTestCase {
         let command = Shell(commandPath: "/bin/ls", workingDirectoryPath: "./Carthage")
         switch command.output() {
         case let .Success(output):
-            XCTAssertEqual(output.value, "Checkouts\n")
+            XCTAssertEqual(output, "Checkouts\n")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -77,10 +68,10 @@ class ShellTests: XCTestCase {
     func testCommandWithIllegalOption() {
         let command = Shell(commandPath: "/bin/ls", arguments: ["-j"])
         switch command.output() {
-        case let .Success(output):
+        case .Success(_):
             XCTFail("Must be fail")
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
         }
     }
 

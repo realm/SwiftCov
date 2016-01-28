@@ -10,15 +10,6 @@ import XCTest
 import SwiftCovFramework
 
 class XcodebuildTests: XCTestCase {
-
-    override func setUp() {
-        super.setUp()
-    }
-
-    override func tearDown() {
-        super.tearDown()
-    }
-
     func testBuildSettings() {
         let xcodebuild = Xcodebuild(arguments: ["test",
                                                 "-scheme", "SwiftCovFramework",
@@ -27,7 +18,7 @@ class XcodebuildTests: XCTestCase {
 
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
-            let buildSettings = BuildSettings(output: output.value)
+            let buildSettings = BuildSettings(output: output)
 
             let executable = buildSettings.executable
             XCTAssertEqual(executable.name, "SwiftCovFramework")
@@ -79,7 +70,7 @@ class XcodebuildTests: XCTestCase {
                 }
             }
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -94,7 +85,7 @@ class XcodebuildTests: XCTestCase {
 
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
-            let buildSettings = BuildSettings(output: output.value)
+            let buildSettings = BuildSettings(output: output)
 
             let executable = buildSettings.executable
             XCTAssertEqual(executable.name, "SwiftCovFramework")
@@ -119,7 +110,7 @@ class XcodebuildTests: XCTestCase {
                 XCTFail("Failed to load build settings: SRCROOT")
             }
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
@@ -134,7 +125,7 @@ class XcodebuildTests: XCTestCase {
 
         switch xcodebuild.showBuildSettings() {
         case let .Success(output):
-            let buildSettings = BuildSettings(output: output.value)
+            let buildSettings = BuildSettings(output: output)
 
             let executable = buildSettings.executable
             XCTAssertEqual(executable.name, "SwiftCovFramework")
@@ -160,14 +151,14 @@ class XcodebuildTests: XCTestCase {
             }
             if let objroot = executable.buildSettings["OBJROOT"] {
                 XCTAssertEqual(objroot,
-                    NSFileManager().currentDirectoryPath
-                    .stringByAppendingPathComponent("build")
+                    ((NSFileManager().currentDirectoryPath as NSString)
+                    .stringByAppendingPathComponent("build") as NSString)
                     .stringByAppendingPathComponent("Build/Intermediates"))
             } else {
                 XCTFail("Failed to load build settings: BUILD_DIR")
             }
         case let .Failure(error):
-            XCTAssertNotEqual(error.value, EXIT_SUCCESS)
+            XCTAssertNotEqual(error, EXIT_SUCCESS)
             XCTFail("Execution failure")
         }
     }
