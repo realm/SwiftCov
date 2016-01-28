@@ -7,7 +7,6 @@
 //
 
 import Commandant
-import Box
 
 /// Possible errors within SwiftCov.
 enum SwiftCovError: CustomStringConvertible {
@@ -43,5 +42,5 @@ enum SwiftCovError: CustomStringConvertible {
 }
 
 func toCommandantError(swiftCovError: SwiftCovError) -> CommandantError<SwiftCovError> {
-    return .CommandError(Box(swiftCovError))
+    return .CommandError(swiftCovError)
 }

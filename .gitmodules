@@ -4,9 +4,6 @@
 [submodule "Carthage/Checkouts/Commandant"]
 	path = Carthage/Checkouts/Commandant
 	url = https://github.com/Carthage/Commandant.git
-[submodule "Carthage/Checkouts/Box"]
-	path = Carthage/Checkouts/Box
-	url = https://github.com/robrix/Box.git
 [submodule "Carthage/Checkouts/Result"]
 	path = Carthage/Checkouts/Result
 	url = https://github.com/antitypical/Result.git
