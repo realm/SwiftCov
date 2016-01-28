@@ -28,10 +28,10 @@ struct GenerateCommand: CommandType {
     let verb = "generate"
     let function = "Generate test code coverage files for your Swift tests"
 
-    func run(options: GenerateOptions) -> Result<(), CommandantError<SwiftCovError>> {
+    func run(options: GenerateOptions) -> Result<(), SwiftCovError> {
         let arguments = Process.arguments
         if arguments.count < 4 {
-            return .Failure(.UsageError(description: "Usage: swiftcov generate [swiftcov options] xcodebuild [xcodebuild options] (-- [swift files])"))
+            return .Failure(.InvalidArgument(description: "Usage: swiftcov generate [swiftcov options] xcodebuild [xcodebuild options] (-- [swift files])"))
         }
         let requiredArguments = [
             "xcodebuild",
@@ -41,7 +41,7 @@ struct GenerateCommand: CommandType {
         ]
         for argument in requiredArguments {
             if arguments.indexOf(argument) == nil {
-                return .Failure(.UsageError(description: "'\(argument)' argument required"))
+                return .Failure(.InvalidArgument(description: "'\(argument)' argument required"))
             }
         }
 
@@ -77,7 +77,7 @@ struct GenerateCommand: CommandType {
         case .Success:
             return .Success()
         case .Failure(_):
-            return .Failure(toCommandantError(.GenerateFailed))
+            return .Failure(.GenerateFailed)
         }
     }
 }

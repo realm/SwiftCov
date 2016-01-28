@@ -14,7 +14,7 @@ struct VersionCommand: CommandType {
     let verb = "version"
     let function = "Display the current version of SwiftLint"
 
-    func run(options: NoOptions<CommandantError<()>>) -> Result<(), CommandantError<()>> {
+    func run(options: NoOptions<SwiftCovError>) -> Result<(), SwiftCovError> {
         let version = NSBundle(identifier: SwiftCovFrameworkBundleIdentifier)?.objectForInfoDictionaryKey("CFBundleShortVersionString") as? String
         print(version!)
         return .Success()
