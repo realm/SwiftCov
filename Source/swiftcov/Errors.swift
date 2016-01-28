@@ -9,7 +9,7 @@
 import Commandant
 
 /// Possible errors within SwiftCov.
-enum SwiftCovError: CustomStringConvertible {
+enum SwiftCovError: ErrorType, CustomStringConvertible {
     /// One or more argument was invalid.
     case InvalidArgument(description: String)
 
@@ -29,13 +29,13 @@ enum SwiftCovError: CustomStringConvertible {
         switch self {
         case let .InvalidArgument(description):
             return description
-        case let .MissingBuildSetting(description):
+        case .MissingBuildSetting(_):
             return "`xcodebuild` did not return a build setting that we needed."
         case let .ReadFailed(path):
             return "Failed to read file at '\(path)'."
-        case let .GenerateFailed:
+        case .GenerateFailed:
             return "Failed to generate test code coverage files."
-        case let .TaskError:
+        case .TaskError:
             return "A shell task exited unsuccessfully."
         }
     }

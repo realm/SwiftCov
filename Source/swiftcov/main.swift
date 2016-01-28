@@ -8,8 +8,8 @@
 
 import Commandant
 
-let registry = CommandRegistry<SwiftCovError>()
-registry.register(GenerateCommand())
+let registry = CommandRegistry<CommandantError<()>>()
+//registry.register(GenerateCommand())
 registry.register(VersionCommand())
 
 let helpCommand = HelpCommand(registry: registry)
