@@ -24,11 +24,11 @@ public class Networking {
     }
 
     public func request(completion:(data: NSData?, response: NSURLResponse, error: NSError?) -> Void) -> Void {
-        var session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
-        var request = NSMutableURLRequest(URL: requesetURL)
+        let session = NSURLSession(configuration: NSURLSessionConfiguration.defaultSessionConfiguration())
+        let request = NSMutableURLRequest(URL: requesetURL)
 
         session.dataTaskWithRequest(request, completionHandler: { (data, response, error) -> Void in
-            completion(data: data, response: response, error: error)
+            completion(data: data, response: response!, error: error)
         }).resume()
     }
 
