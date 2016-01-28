@@ -65,7 +65,7 @@ public class CoverageReporter {
                         let dyldFallbackLibraryPath = "\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib"
 
                         var env = [
-                            "SWIFTCOV_FILES": join("\n", files ?? []),
+                            "SWIFTCOV_FILES": (files ?? []).joinWithSeparator("\n"),
                             "SWIFTCOV_SDK_NAME": sdkName,
                             "SWIFTCOV_DYLD_FRAMEWORK_PATH": builtProductsDir,
                             "SWIFTCOV_DYLD_LIBRARY_PATH": builtProductsDir,
@@ -85,7 +85,7 @@ public class CoverageReporter {
 
                             switch bootedDevice {
                             case let .Success(bootedDevice):
-                                if let bootedDevice = bootedDevice.value {
+                                if let bootedDevice = bootedDevice {
                                     env["SWIFTCOV_XPC_SIMULATOR_LAUNCHD_NAME"] = "com.apple.CoreSimulator.SimDevice.\(bootedDevice.UDID).launchd_sim"
                                 }
                             case .Failure:

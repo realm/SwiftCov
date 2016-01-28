@@ -59,11 +59,9 @@ public struct BuildSettings {
             let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
             if matches.count == 1 {
                 for match in matches {
-                    if let match = match as? NSTextCheckingResult {
-                        target = (line as NSString).substringWithRange(match.rangeAtIndex(1))
-                        if let target = target {
-                            settings[target] = BuildSettingsDictionary()
-                        }
+                    target = (line as NSString).substringWithRange(match.rangeAtIndex(1))
+                    if let target = target {
+                        settings[target] = BuildSettingsDictionary()
                     }
                 }
             } else if let target = target {
