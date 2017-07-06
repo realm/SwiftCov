@@ -33,7 +33,7 @@ class NetworkingTests: XCTestCase {
         }
 
         waitForExpectationsWithTimeout(5.0, handler: { (error) -> Void in
-            if let error = error {
+            if let _ = error {
                 XCTFail("Connection timeout")
             }
         })

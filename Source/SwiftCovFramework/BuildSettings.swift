@@ -55,19 +55,17 @@ public struct BuildSettings {
         var target: String?
         var settings = [TargetName: BuildSettingsDictionary]()
         for line in lines {
-            let regex = NSRegularExpression(pattern: "^Build settings for action .+ and target (.+):$", options: nil, error: nil)!
-            let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+            let regex = try! NSRegularExpression(pattern: "^Build settings for action .+ and target (.+):$", options: [])
+            let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
             if matches.count == 1 {
                 for match in matches {
-                    if let match = match as? NSTextCheckingResult {
-                        target = (line as NSString).substringWithRange(match.rangeAtIndex(1))
-                        if let target = target {
-                            settings[target] = BuildSettingsDictionary()
-                        }
+                    target = (line as NSString).substringWithRange(match.rangeAtIndex(1))
+                    if let target = target {
+                        settings[target] = BuildSettingsDictionary()
                     }
                 }
             } else if let target = target {
-                let kv = split(line, allowEmptySlices: true) { $0 == "=" }
+                let kv = line.characters.split(allowEmptySlices: true) { $0 == "=" }.map { String($0) }
                 let key = kv[0].stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
                 let value = kv[1].stringByTrimmingCharactersInSet(whitespaceAndNewlineCharacterSet)
                 if var s = settings[target] {

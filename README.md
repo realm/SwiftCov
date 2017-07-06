@@ -1,3 +1,5 @@
+**Swift 2.0 introduced native support for test coverage, so SwiftCov is now deprecated.**
+
 # SwiftCov
 
 A tool to generate test code coverage information for Swift.

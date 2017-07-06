@@ -7,10 +7,9 @@
 //
 
 import Commandant
-import Box
 
 /// Possible errors within SwiftCov.
-enum SwiftCovError: Printable {
+enum SwiftCovError: ErrorType, CustomStringConvertible {
     /// One or more argument was invalid.
     case InvalidArgument(description: String)
 
@@ -30,18 +29,18 @@ enum SwiftCovError: Printable {
         switch self {
         case let .InvalidArgument(description):
             return description
-        case let .MissingBuildSetting(description):
+        case .MissingBuildSetting(_):
             return "`xcodebuild` did not return a build setting that we needed."
         case let .ReadFailed(path):
             return "Failed to read file at '\(path)'."
-        case let .GenerateFailed:
+        case .GenerateFailed:
             return "Failed to generate test code coverage files."
-        case let .TaskError:
+        case .TaskError:
             return "A shell task exited unsuccessfully."
         }
     }
 }
 
 func toCommandantError(swiftCovError: SwiftCovError) -> CommandantError<SwiftCovError> {
-    return .CommandError(Box(swiftCovError))
+    return .CommandError(swiftCovError)
 }

@@ -12,6 +12,8 @@ import Result
 
 public typealias TerminationStatus = Int32
 
+extension TerminationStatus: ErrorType {}
+
 public class Shell {
     private let commandPath: String
     private let arguments: [String]
@@ -62,7 +64,7 @@ public class Shell {
     }
 
     private func launchTask(task: NSTask) -> Result<String, TerminationStatus> {
-        if let fileHandle = task.standardOutput.fileHandleForReading {
+        if let fileHandle = task.standardOutput!.fileHandleForReading {
             fileHandle.readabilityHandler = { fileHandle in
                 if let string = NSString(data: fileHandle.availableData, encoding: NSUTF8StringEncoding) {
                     if self.verbose {
@@ -72,7 +74,7 @@ public class Shell {
                 }
             }
         }
-        if let fileHandle = task.standardError.fileHandleForReading {
+        if let fileHandle = task.standardError!.fileHandleForReading {
             fileHandle.readabilityHandler = { fileHandle in
                 if let string = NSString(data: fileHandle.availableData, encoding: NSUTF8StringEncoding) {
                     if self.verbose {
@@ -84,19 +86,19 @@ public class Shell {
         }
 
         if verbose {
-            println("Executing command:")
+            print("Executing command:")
             if let environment = environment {
                 for (k, v) in environment {
-                    println("\(k)=\"\(v)\" \\")
+                    print("\(k)=\"\(v)\" \\")
                 }
             }
-            println("\"\(commandPath)\" \\")
-            for (index, argument) in enumerate(arguments) {
-                print("  \"\(argument)\"")
+            print("\"\(commandPath)\" \\")
+            for (index, argument) in arguments.enumerate() {
+                print("  \"\(argument)\"", terminator: "")
                 if index < arguments.count - 1 {
-                    println(" \\")
+                    print(" \\")
                 } else {
-                    println("\n")
+                    print("\n")
                 }
             }
         }
@@ -105,18 +107,18 @@ public class Shell {
         task.waitUntilExit()
 
         task.terminationHandler = { task in
-            if let fileHandle = task.standardOutput.fileHandleForReading {
+            if let fileHandle = task.standardOutput!.fileHandleForReading {
                 fileHandle.readabilityHandler = nil
             }
-            if let fileHandle = task.standardError.fileHandleForReading {
+            if let fileHandle = task.standardError!.fileHandleForReading {
                 fileHandle.readabilityHandler = nil
             }
         }
 
         if task.terminationStatus == EXIT_SUCCESS {
-            return .success(outputString)
+            return .Success(outputString)
         } else {
-            return .failure(task.terminationStatus)
+            return .Failure(task.terminationStatus)
         }
     }
 }

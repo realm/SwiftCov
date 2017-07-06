@@ -43,8 +43,6 @@ public struct SimCtl {
 
         var mode = Mode.DeviceType
 
-        var target: String?
-        var settings = [String: String]()
         for line in lines {
             switch line {
             case "== Device Types ==":
@@ -85,16 +83,14 @@ public struct DeviceType {
     public let identifier: String
 
     internal static func parseLine(line: String) -> DeviceType? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
-                if let match = match as? NSTextCheckingResult {
-                    let name = (line as NSString).substringWithRange(match.rangeAtIndex(1))
-                    let identifier = (line as NSString).substringWithRange(match.rangeAtIndex(2))
+                let name = (line as NSString).substringWithRange(match.rangeAtIndex(1))
+                let identifier = (line as NSString).substringWithRange(match.rangeAtIndex(2))
 
-                    return DeviceType(name: name, identifier: identifier)
-                }
+                return DeviceType(name: name, identifier: identifier)
             }
         }
         return nil
@@ -107,17 +103,15 @@ public struct Runtime {
     public let identifier: String
 
     internal static func parseLine(line: String) -> Runtime? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
-                if let match = match as? NSTextCheckingResult {
-                    let name = (line as NSString).substringWithRange(match.rangeAtIndex(1))
-                    let build = (line as NSString).substringWithRange(match.rangeAtIndex(2))
-                    let identifier = (line as NSString).substringWithRange(match.rangeAtIndex(3))
+                let name = (line as NSString).substringWithRange(match.rangeAtIndex(1))
+                let build = (line as NSString).substringWithRange(match.rangeAtIndex(2))
+                let identifier = (line as NSString).substringWithRange(match.rangeAtIndex(3))
 
-                    return Runtime(name: name, build: build, identifier: identifier)
-                }
+                return Runtime(name: name, build: build, identifier: identifier)
             }
         }
         return nil
@@ -130,17 +124,15 @@ public struct Device {
     public let booted: Bool
 
     internal static func parseLine(line: String) -> Device? {
-        let regex = NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: nil, error: nil)!
-        let matches = regex.matchesInString(line, options: nil, range: NSRange(location: 0, length: (line as NSString).length))
+        let regex = try! NSRegularExpression(pattern: "^(.+) \\((.+)\\) \\((.+)\\)$", options: [])
+        let matches = regex.matchesInString(line, options: [], range: NSRange(location: 0, length: (line as NSString).length))
         if matches.count == 1 {
             for match in matches {
-                if let match = match as? NSTextCheckingResult {
-                    let iOSVersion = (line as NSString).substringWithRange(match.rangeAtIndex(1))
-                    let UDID = (line as NSString).substringWithRange(match.rangeAtIndex(2))
-                    let state = (line as NSString).substringWithRange(match.rangeAtIndex(3))
+                let iOSVersion = (line as NSString).substringWithRange(match.rangeAtIndex(1))
+                let UDID = (line as NSString).substringWithRange(match.rangeAtIndex(2))
+                let state = (line as NSString).substringWithRange(match.rangeAtIndex(3))
 
-                    return Device(iOSVersion: iOSVersion, UDID: UDID, booted: state == "Booted")
-                }
+                return Device(iOSVersion: iOSVersion, UDID: UDID, booted: state == "Booted")
             }
         }
         return nil

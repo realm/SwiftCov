@@ -21,12 +21,6 @@
 				<key>RootRelativeBundlePath</key>
 				<string>Library/Frameworks/SwiftCovFramework.framework/Versions/A/Frameworks/Result.framework</string>
 			</dict>
-			<dict>
-				<key>BundleOverwriteAction</key>
-				<string></string>
-				<key>RootRelativeBundlePath</key>
-				<string>Library/Frameworks/SwiftCovFramework.framework/Versions/A/Frameworks/Box.framework</string>
-			</dict>
 		</array>
 		<key>RootRelativeBundlePath</key>
 		<string>Library/Frameworks/SwiftCovFramework.framework</string>

@@ -42,15 +42,18 @@ public class CoverageReporter {
             let objectFileDirNormal = buildSetting("OBJECT_FILE_DIR_normal"),
             let currentArch = buildSetting("CURRENT_ARCH"),
             let scriptPath = NSBundle(forClass: Shell.self).pathForResource("coverage", ofType: "py") {
-                let targetPath = builtProductsDir.stringByAppendingPathComponent(fullProductName)
+                let targetPath = (builtProductsDir as NSString).stringByAppendingPathComponent(fullProductName)
                 let outputDir: String
                 if outputDirectory.isEmpty {
-                    outputDir = objectFileDirNormal.stringByAppendingPathComponent(currentArch)
+                    outputDir = (objectFileDirNormal as NSString).stringByAppendingPathComponent(currentArch)
                 } else {
                     let fileManager = NSFileManager.defaultManager()
                     var isDirectory: ObjCBool = false
                     if !fileManager.fileExistsAtPath(outputDirectory, isDirectory: &isDirectory) || !isDirectory {
-                        fileManager.createDirectoryAtPath(outputDirectory, withIntermediateDirectories: true, attributes: nil, error: nil)
+                        do {
+                            try fileManager.createDirectoryAtPath(outputDirectory, withIntermediateDirectories: true, attributes: nil)
+                        } catch _ {
+                        }
                     }
                     outputDir = outputDirectory
                 }
@@ -62,7 +65,7 @@ public class CoverageReporter {
                         let dyldFallbackLibraryPath = "\(xcodePath)/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator.sdk/usr/lib"
 
                         var env = [
-                            "SWIFTCOV_FILES": join("\n", files ?? []),
+                            "SWIFTCOV_FILES": (files ?? []).joinWithSeparator("\n"),
                             "SWIFTCOV_SDK_NAME": sdkName,
                             "SWIFTCOV_DYLD_FRAMEWORK_PATH": builtProductsDir,
                             "SWIFTCOV_DYLD_LIBRARY_PATH": builtProductsDir,
@@ -82,7 +85,7 @@ public class CoverageReporter {
 
                             switch bootedDevice {
                             case let .Success(bootedDevice):
-                                if let bootedDevice = bootedDevice.value {
+                                if let bootedDevice = bootedDevice {
                                     env["SWIFTCOV_XPC_SIMULATOR_LAUNCHD_NAME"] = "com.apple.CoreSimulator.SimDevice.\(bootedDevice.UDID).launchd_sim"
                                 }
                             case .Failure:
