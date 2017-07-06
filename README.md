@@ -103,7 +103,7 @@ See [the generated coverage file](Examples/ExampleFramework/results/coverage.htm
 Use [codecov-bash](https://github.com/codecov/codecov-bash) global uploader.
 
 ```yaml
-# cirlce.yml
+# circle.yml
 test:
   override:
     - sudo chown :wheel /Library/Developer/CoreSimulator/Profiles/Runtimes/iOS\ *.simruntime/Contents/Resources/RuntimeRoot/usr/lib/dyld_sim
