@@ -5,6 +5,7 @@ A tool to generate test code coverage information for Swift.
 **This project has been entirely obsoleted by the native code coverage generation support available in Swift 2 onwards. It is therefore no longer maintained or supported.**
 
 [![Circle CI](https://circleci.com/gh/realm/SwiftCov/tree/master.svg?style=svg)](https://circleci.com/gh/realm/SwiftCov/tree/master)
+[![codecov.io](http://codecov.io/github/realm/SwiftCov/coverage.svg?branch=master)](http://codecov.io/github/realm/SwiftCov?branch=master)
 [![Coverage Status](https://coveralls.io/repos/realm/SwiftCov/badge.svg)](https://coveralls.io/r/realm/SwiftCov)
 
 ## Installation

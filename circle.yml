@@ -11,4 +11,5 @@ test:
     - script/cibuild
     - make coverage
   post:
+    - bash <(curl -s https://codecov.io/bash)
     - bundle exec coveralls-gcov --repo-token XVWMzBFVchIyZnGc4qmkY6kwLorw4dvZW --no-gcov
